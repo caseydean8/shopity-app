@@ -5,5 +5,12 @@ module.exports = function(sequelize, DataTypes) {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING
   });
+
+  User.associate = models => {
+    User.hasMany(models.list, {
+      onDelete: "cascade"
+    });
+  };
+
   return User;
 };
