@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "QWEasd!2",
+    "database": "shopping_list_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "testdb",
+    "password": "QWEasd!2",
+    "database": "shopping_list_db",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
