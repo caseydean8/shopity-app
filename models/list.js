@@ -1,10 +1,30 @@
 module.exports = function(sequelize, DataTypes) {
   const List = sequelize.define("list", {
-    onList: DataTypes.BOOLEAN,
-    inCart: DataTypes.BOOLEAN,
-    inPantry: DataTypes.BOOLEAN,
-    inactive: DataTypes.BOOLEAN,
-    unavailable: DataTypes.BOOLEAN
+    onList: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    inCart: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    inPantry: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    inactive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    },
+    unavailable: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    }
   });
 
   List.associate = models => {

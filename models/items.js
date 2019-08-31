@@ -1,7 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
   const Item = sequelize.define("item", {
-    name: DataTypes.STRING,
-    category: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    }
   });
 
   Item.associate = models => {
