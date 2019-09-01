@@ -1,0 +1,183 @@
+.jumbotron {
+    color: black;
+    background-color: white;
+    height: 170px;
+}
+
+#logo {
+    position: absolute;
+    left: 1;
+    top: 0;
+}
+
+.topnav {
+    float: right;
+    margin-top: 90px;
+    font-size: 20px;
+    color: black;
+    font-family: 'Abel', sans-serif;
+}
+
+a {
+    color: black;
+}
+
+.bg-image {
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.aisle1 {
+    background-image: url("/assets/images/aisle1.jpg");
+    height: 100%
+}
+
+.aisle2 {
+    background-image: url("/assets/images/aisle2.jpg");
+    height: 100%
+}
+
+.aisle3 {
+    background-image: url("/assets/images/aisle3.jpg");
+    height: 100%
+}
+
+.aisle4 {
+    background-image: url("/assets/images/aisle4.jpg");
+    height: 100%
+}
+
+.aisle5 {
+    background-image: url("/assets/images/aisle5.jpg");
+    height: 100%
+}
+
+#tagline {
+    margin: 0 auto;
+    margin-top: 60px;
+    font-size: 80px;
+    color: white;
+    font-family: 'Nanum Pen Script', cursive;
+}
+
+#tagline2 {
+    float: left;
+    margin-top: 50px;
+    font-family: 'Abel', sans-serif;
+    font-size: 27px;
+    color: black;
+}
+
+#tagline3 {
+    float: left;
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
+#tagline4 {
+    font-family: 'Abel', sans-serif;
+    font-size: 80px;
+    margin: 0 auto;
+    color: white;
+}
+
+#tagline5 {
+    color: #1F5A01;
+    font-size: 80px;
+    font-family: 'Raleway Dots', cursive;
+    margin: 0 auto;
+}
+
+#box1,
+#box2,
+#box3 {
+    width: 260px;
+    height: 200px;
+    background: white;
+    opacity: 0.78;
+    border-radius: 10%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.fa-list-alt,
+.fa-check-double,
+.fa-comments-dollar {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 105px;
+    font-size: 40px;
+    color: black;
+    cursor: pointer;
+}
+
+.fa-quote-left,
+.fa-quote-right {
+    font-size: 28px;
+}
+
+.fa-quote-left {
+    float: left;
+}
+
+.fa-quote-right {
+    float: right;
+}
+
+#bubble {
+    margin-left: 82px;
+}
+
+.fa-star {
+    color: #F3D82B;
+}
+
+#howTo {
+    text-align: center;
+    font-family: 'Abel', sans-serif;
+    font-size: black;
+    font-size: 20px;
+    margin-top: 12px;
+}
+
+#infoLists {
+    font-size: 20px;
+    color: white;
+    font-family: 'Abel', sans-serif;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.card-footer {
+    color: black;
+    font-size: 11px;
+    text-align: center;
+    background-color: white;
+}
+
+.bg-image-color1 {
+    background-color: black;
+    opacity: 0.8;
+    border-top: 2px solid white;
+}
+
+.bg-image-color2 {
+    background-color: white;
+    /* border-bottom: 2px dotted green;
+    border-top: 2px dotted green;  */
+}
+
+.fa-circle {
+    font-size: 20px;
+    margin-top: -20px;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+
+/* ////// */
