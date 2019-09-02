@@ -25,6 +25,7 @@ module.exports = function(app) {
     });
   });
 
+  //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
   app.post("/login", (req, res) => {
     let theUsername = req.body.username;
     let thePassword = req.body.password;
@@ -34,12 +35,12 @@ module.exports = function(app) {
       })
       .then(users => {
         if (users.length === 0) {
-          res.status("404").send({ user: notFound });
+          res.status("404").send({ response: "userNotFound" });
         } else {
           if (users[0].password === thePassword) {
             res.status("200").redirect("/user");
           } else {
-            res.status("401").send({ password: noMatch });
+            res.status("404").send({ response: "passwordNotMatch" });
           }
         }
       });
