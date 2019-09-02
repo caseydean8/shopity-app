@@ -1,25 +1,24 @@
 const db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/userlist", function(req, res) {
+  app.post("/api/userlist", function(req, res) {
     db.list
       .findAll({
-        where: { id: req.params.userId }
+        where: { id: req.body.userId }
       })
       .then(userList => {
         res.json(userList);
       });
   });
 
-  // Create a new example
+  // CREATE A NEW USER
   app.post("/api/adduser", function(req, res) {
     db.user.create(req.body).then(newUser => {
       res.json(newUser);
     });
   });
 
-  // Delete an example by id
+  // CREATE A NEW ITEM
   app.post("/api/newitem", function(req, res) {
     db.item.create(req.body).then(newItem => {
       res.json(newItem);
