@@ -1,7 +1,7 @@
 // SET EXPRESS ENVIRONMENT
 const express = require("express");
 const app = express();
-
+const path = require("path");
 const logger = require("./winston.js");
 
 app.use(express.urlencoded({ extended: false }));
@@ -10,10 +10,9 @@ app.use(express.json());
 // SERVE UP STATIC FILES
 app.use(express.static("public"));
 
-//  SET UP HANDLEBARS
-const expHandlebars = require("express-handlebars");
-app.engine("handlebars", expHandlebars({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+//  START USING PUG
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "views"));
 
 // ADD WINSTON LOGGER MIDDLEWARE TO SERVER
 app.use(logger);
