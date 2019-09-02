@@ -7,12 +7,12 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/user/", function(req, res) {
+  app.get("/user", function(req, res) {
     res.render("user-home");
   });
 
   // Load example page and pass in an example by id
-  app.get("/list/", function(req, res) {
+  app.get("/list", function(req, res) {
     res.send("list");
   });
 
