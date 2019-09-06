@@ -29,7 +29,41 @@ html
         link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
         |     
         link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
+        |
+        // JQuery & Java
+        script(src='ttp://code.jquery.com/jquery-3.3.1.min.js')
+        script(src='assets/javascript/app.js')
     body
+
+        #list-builder
+            #popup-box 
+                img#popup-close(src='assets/images/close.png')
+                #popup-box-content 
+                h1 Sign-in or Create Account
+                p 
+                    | Stay up to date on the latest in the shopify app, plus receive exclusive coupons by
+                    | subscribing to our newsletter. 
+                    br
+                    br
+                form#popup-form(action='https://email_list_service_api.com')
+                    input(type='hidden' name='list' value='key_list_etc') 
+                    input(type='text' name='' placeholder='Email Address') 
+                    = ' '
+                    input(type='text' name='' placeholder='Password')
+                    br
+                    button(type='button' name='signin') Sign in
+                    br
+                    hr
+                    br
+                    input(type='hidden' name='list' value='key_list_etc')
+                    input(type='text' name='' placeholder='Full Name') 
+                    = ' '
+                    input(type='text' name='' placeholder='Email Address')
+                    br
+                    button(type='button' name='create') Create Account
+                
+            
+
         .jumbotron
             #logo
                 img(src='/assets/images/logo7.png', alt='logo')
@@ -62,10 +96,10 @@ html
                         br
                         |                     
                         #howTo
-                        | Add items to list
-                        br
-                        | to be purchased
-                        |                     
+                            | Add items to list
+                            br
+                            | to be purchased
+                            |                     
                         .col-2
                     |
 
@@ -86,12 +120,12 @@ html
                         i.fas.fa-comments-dollar
                         |                     
                         #howTo
-                        | Re-adding an item from your
-                        br
-                        | &quot;in-kitchen&quot; list will notify user 
-                        br
-                        | they already
-                        |                         have it at home
+                            | Re-adding an item from your
+                            br
+                            | &quot;in-kitchen&quot; list will notify user 
+                            br
+                            | they already
+                            |                         have it at home
                 br
                 br
                 br
