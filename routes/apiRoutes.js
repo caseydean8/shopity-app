@@ -3,12 +3,14 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
-  app.post("/api/userlist", (req, res) => {
+  app.post("/api/userlist", isAuthenticated, (req, res) => {
+    // this route finds all list items for the authenticated user
     db.list
       .findAll({
-        where: { id: req.body.userId }
+        where: { userId: req.user.id }
       })
       .then(userList => {
+        // return the list as an array of objects in JSON format
         res.json(userList);
       });
   });
@@ -16,22 +18,33 @@ module.exports = app => {
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
     db.user
+      // create a new user in the users table
       .create(req.body)
-      .then(newUser => {
-        res.json(newUser);
-      })
       .then(() => {
+        // redirect the new user to the login route
         res.redirect(307, "/login");
       })
       .catch(err => {
+        // if there is an error, return the error
         res.status(401), json(err);
       });
   });
 
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
+    // use the req.body object to create a new entry in the items table
     db.item.create(req.body).then(newItem => {
-      res.json(newItem);
+      // after that item is created, add it to the list table for the user
+      let newListItem = {};
+      // pull together an obect to send to ther database that mirrors the lists db
+      newListItem.userId = req.user.id;
+      newListItem.itemID = newItem.id;
+      newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
+      newListItem.inCart = false;
+      db.list.create(newListItem).then(response => {
+        // return the list item we just created.
+        res.json(response);
+      });
     });
   });
 
@@ -42,18 +55,19 @@ module.exports = app => {
 
   // Route for logging user out
   app.get("/logout", (req, res) => {
+    // use passport to log the user out of their session
     req.logout();
+    // redirect the browse to the home route with no user object
     res.redirect("/");
   });
 
   app.post("/api/update", isAuthenticated, (req, res) => {
+    // pull together an obect to send to ther database that mirrors the lists db
     let newItem = {};
     newItem.userId = req.user.id;
     newItem.itemId = req.body.itemId;
     newItem.onList = req.body.onList;
     newItem.inCart = req.body.inCart;
-
-    console.log(newItem);
 
     // check if the id/item pair exists
     db.list
@@ -65,9 +79,10 @@ module.exports = app => {
       })
       .then(theItem => {
         if (theItem) {
+          // if the item exists, return it
           res.json(theItem);
         } else {
-          console.log("Item does not exist yet");
+          // if the item does not exist, create it.
           db.list.create(newItem).then(response => {
             res.json(response);
           });
