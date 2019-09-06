@@ -1,3 +1,7 @@
+.body {
+    font-family: 'Abel', sans-serif;
+}
+
 .jumbotron {
     color: black;
     background-color: white; 
@@ -59,9 +63,9 @@ a {
 }
 
 #tagline4 {
+    margin: 0 auto; 
     font-family: 'Abel', sans-serif;
     font-size: 80px; 
-    margin: 0 auto;
     color: white; 
 }
 
