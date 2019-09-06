@@ -10,17 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: false,
       allowNull: false
     },
-    inPantry: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false
-    },
     inactive: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false
-    },
-    unavailable: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       allowNull: false

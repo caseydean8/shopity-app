@@ -1,8 +1,9 @@
 const passport = require("../config/passport.js");
 const db = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
-  app.post("/api/userlist", function(req, res) {
+module.exports = app => {
+  app.post("/api/userlist", (req, res) => {
     db.list
       .findAll({
         where: { id: req.body.userId }
@@ -12,15 +13,23 @@ module.exports = function(app) {
       });
   });
 
-  // CREATE A NEW USER
-  app.post("/api/adduser", function(req, res) {
-    db.user.create(req.body).then(newUser => {
-      res.json(newUser);
-    });
+  // CREATE A NEW USER, then log them in and redirect them to the user-home page.
+  app.post("/api/adduser", (req, res) => {
+    db.user
+      .create(req.body)
+      .then(newUser => {
+        res.json(newUser);
+      })
+      .then(() => {
+        res.redirect(307, "/login");
+      })
+      .catch(err => {
+        res.status(401), json(err);
+      });
   });
 
   // CREATE A NEW ITEM
-  app.post("/api/newitem", function(req, res) {
+  app.post("/api/newitem", isAuthenticated, (req, res) => {
     db.item.create(req.body).then(newItem => {
       res.json(newItem);
     });
@@ -28,46 +37,41 @@ module.exports = function(app) {
 
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
   app.post("/login", passport.authenticate("local"), (req, res) => {
-    res.json(req.user);
+    res.redirect("/user");
   });
 
   // Route for logging user out
-  app.get("/logout", function(req, res) {
+  app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
   });
 
-  // app.post("api/update-item", (req, res) => {
-  // let userId = req.body.userId;
-  // let itemId = req.body.itemId;
-  // let fieldToUpdate = req.body.field;
-  // let newValue = req.body.newValue;
+  app.post("/api/update", isAuthenticated, (req, res) => {
+    let newItem = {};
+    newItem.userId = req.user.id;
+    newItem.itemId = req.body.itemId;
+    newItem.onList = req.body.onList;
+    newItem.inCart = req.body.inCart;
 
-  // // check if the id/item pair exists
-  // // if it exists set a variable to tell us
+    console.log(newItem);
 
-  // switch (fieldToUpdate) {
-  //   case "onList":
-  //     // if pair exists update it, otherwise create it.
-  //     break;
-  //   case "inCart":
-  //             // if pair exists update it, otherwise create it.
-
-  //     break;
-  //   case "inPantry":
-  //             // if pair exists update it, otherwise create it.
-
-  //     break;
-  //   case "inactive":
-  //             // if pair exists update it, otherwise create it.
-
-  //     break;
-  //   case "unavailable":
-  //             // if pair exists update it, otherwise create it.
-
-  //     break;
-  //   default:
-  //     res.status(401).send("Something went wrong");
-  // }
-  // });
+    // check if the id/item pair exists
+    db.list
+      .findOne({
+        where: {
+          userId: newItem.userId,
+          itemId: newItem.itemId
+        }
+      })
+      .then(theItem => {
+        if (theItem) {
+          res.json(theItem);
+        } else {
+          console.log("Item does not exist yet");
+          db.list.create(newItem).then(response => {
+            res.json(response);
+          });
+        }
+      });
+  });
 };
