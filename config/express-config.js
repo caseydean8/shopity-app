@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const logger = require("./winston.js");
+const passport = require("./passport.js");
+const session = require("express-session");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -16,6 +18,13 @@ app.set("views", path.join(__dirname, "views"));
 
 // ADD WINSTON LOGGER MIDDLEWARE TO SERVER
 app.use(logger);
+
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // SET UP THE ROUTERS
 require("../routes/apiRoutes")(app);
