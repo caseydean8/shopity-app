@@ -45,4 +45,26 @@ module.exports = function(app) {
         }
       });
   });
+
+  app.post("api/update-item", (req, res) => {
+    let userId = req.body.userId;
+    let itemId = req.body.itemId;
+    let fieldToUpdate = req.body.field;
+    let newValue = req.body.newValue;
+
+    switch (fieldToUpdate) {
+      case "onList":
+        break;
+      case "inCart":
+        break;
+      case "inPantry":
+        break;
+      case "inactive":
+        break;
+      case "unavailable":
+        break;
+      default:
+        res.status(402).send("Something went wrong");
+    }
+  });
 };
