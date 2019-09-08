@@ -281,23 +281,22 @@ h4 {
     font-family: 'Abel', sans-serif;
     font-size: 24px;
     color: white;
-    /* text-align: center;  */
+    margin-top: 20px; 
 }
 
 p2 {
     font-family: 'Abel', sans-serif;
     font-size: 21px;
     color: white;
-    /* margin-left: 16px;  */
 }
 
 #nathan,
 #casey,
 #nicole {
-    /* margin-left: 80px;  */
     border: 7px solid #e6e3e3ef;
     border-radius: 75px;
     background-color: #e6e3e3ef;
+    margin-top: 50px; 
 }
 
 #image-holder {
