@@ -80,28 +80,27 @@ a {
 #tagline4 {
     font-family: 'Abel', sans-serif;
     font-size: 80px;
-    margin-left: 18%; 
+    margin-left: 18%;
     color: white;
 }
 
-#tagline5 { 
-    color: white; 
-    font-size: 80px; 
+#tagline5 {
+    color: white;
+    font-size: 80px;
     font-family: 'Raleway Dots', cursive;
-    text-align: center; 
-    padding-top: 10px; 
-    padding-bottom: 30px; 
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
 }
 
-#box1,
-#box2,
-#box3 {
+.triple-box {
     width: 260px;
     height: 200px;
     background: white;
     opacity: 0.78;
     border-radius: 10%;
     margin: 0 auto;
+    margin-top: 1rem;
     cursor: pointer;
 }
 
@@ -159,8 +158,8 @@ a {
 }
 
 .footer-margin {
-    text-align: center; 
-    padding-bottom: 20px; 
+    text-align: center;
+    padding-bottom: 20px;
     color: black;
     font-size: 12px;
     background-color: white;
@@ -174,7 +173,7 @@ a {
 
 .bg-image-color2 {
     background-color: black;
-    opacity: 0.85; 
+    opacity: 0.85;
 }
 
 .fa-circle {
@@ -215,7 +214,7 @@ a {
     max-width: 600px;
     padding: 40px;
     border: 10px solid lightgray;
-    border-radius: 10px; 
+    border-radius: 10px;
     display: none;
 }
 
@@ -239,60 +238,68 @@ a {
     padding: 10px;
     border: 1px solid #333;
     width: 80%;
-    margin: 0 auto; 
-    margin-top: 10px; 
+    margin: 0 auto;
+    margin-top: 10px;
     display: block;
 }
 
 #popup-box button {
     padding: 10px;
-    border: 1px solid lightgray; 
-    cursor: pointer; 
+    border: 1px solid lightgray;
+    cursor: pointer;
 }
 
 button {
-    width: 150px; 
-    border-radius: 10px; 
-    background-color: #2989F7; 
-    font-size: 20px; 
-    margin: 0 auto; 
-    display: block; 
-    color: white; 
+    width: 150px;
+    border-radius: 10px;
+    background-color: #2989F7;
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+    color: white;
 }
+
+
 /* ////// NEW */
 
 .bg-image-color3 {
     background-color: black;
-    opacity: 0.85; 
-    }
+    opacity: 0.85;
+}
 
-    #teamline {
-        font-size: 70px; 
-        font-family: 'Abel', sans-serif;
-        color: black;
-        background-color: rgb(223, 223, 35);
-        padding: 20px; 
-        border-radius: 10px; 
-        text-align: center; 
-    }
+#teamline {
+    font-size: 70px;
+    font-family: 'Abel', sans-serif;
+    color: black;
+    background-color: rgb(223, 223, 35);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
 
-    h4 {
-        font-family: 'Abel', sans-serif;
-        font-size: 24px; 
-        color: white; 
-        /* text-align: center;  */
-    }
-    
-    p2 {
-        font-family: 'Abel', sans-serif;
-        font-size: 21px; 
-        color: white; 
-        /* margin-left: 16px;  */
-    }
-    
-    #nathan, #casey, #nicole {
-        /* margin-left: 80px;  */
-        border: 7px solid #e6e3e3ef; 
-        border-radius: 75px; 
-        background-color: #e6e3e3ef; 
-    }
+h4 {
+    font-family: 'Abel', sans-serif;
+    font-size: 24px;
+    color: white;
+    /* text-align: center;  */
+}
+
+p2 {
+    font-family: 'Abel', sans-serif;
+    font-size: 21px;
+    color: white;
+    /* margin-left: 16px;  */
+}
+
+#nathan,
+#casey,
+#nicole {
+    /* margin-left: 80px;  */
+    border: 7px solid #e6e3e3ef;
+    border-radius: 75px;
+    background-color: #e6e3e3ef;
+}
+
+#image-holder {
+    padding: 1rem;
+}
