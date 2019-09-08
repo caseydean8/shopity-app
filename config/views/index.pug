@@ -49,7 +49,7 @@ html
                     input(type='hidden' name='list' value='key_list_etc') 
                     input(type='text' name='' placeholder='Email Address') 
                     = ' '
-                    input(type='text' name='' placeholder='Password')
+                    input(type='password' name='' placeholder='Password')
                     br
                     button(type='button' name='signin') Sign in
                     br
@@ -59,6 +59,8 @@ html
                     input(type='text' name='' placeholder='Full Name') 
                     = ' '
                     input(type='text' name='' placeholder='Email Address')
+                    = ' '
+                    input(type='password' name='' placeholder='Create Password')
                     br
                     button(type='button' name='create') Create Account
                 
@@ -182,42 +184,40 @@ html
                 .row
                 #tagline5
                     | simplify with shopify
+                    br
 
-        .bg-image.aisle5
+        .bg-image-color3
             .container
+                #teamline
+                    | MEET THE CREATORS
+
                 .row
-                #infoLists
-                    | Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    | Placeholder
-                    br
-                    |  Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    |                     Placeholder
-                    br
-                    |  Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |                     Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
                 br
                 br
-                br
+                .col-4
+                    img(src='/assets/images/nathan.png', alt='nathan')
+                    .container
+                    h4 Nathan Hill 
+                    p2 Server-side + DB, Back-End Developer 
+                    
+
+                .col-4
+                    img(src='assets/images/casey.png', alt='casey')
+                    .container
+                    h4 Casey Carroll
+                    p2 Innovation, New Technology Developer
+                    
+
+                .col-4
+                    img(src='assets/images/nicole.png', alt='nicole')
+                    .container
+                    h4 Nicole LaSusa
+                    p2 Creative Design, Front-End Developer 
+
+        .footer-margin
+            .card-footer
+            img(src='assets/images/footerlogo.png', alt='footer')
+            br
+            | Copyright 2019 
+            br
+            | All Rights Reserved. Created by NCN. 
