@@ -55,12 +55,12 @@ a {
 }
 
 .list1 { 
-    background-image: url("assets/images/list1.jpg"); 
+    background-image: url("/assets/images/list1.jpg"); 
     height: 100% 
 }
 
 .list2 { 
-    background-image: url("assets/images/list2.jpg"); 
+    background-image: url("/assets/images/list2.jpg"); 
     height: 100% 
 }
 
@@ -335,14 +335,16 @@ label {
   .left {
     float: left;
   }
+
   p {
     clear: both;
     padding-top: 1em;
     color: white; 
-    font-size: 15px; 
+    font-size: 16px; 
     font-family: 'Abel', sans-serif;
-    margin-left: -15px; 
+    margin-left: 190px;  
   }
+
   .grocery-list {
     list-style-type: none;
     font-family: 'Abel', sans-serif;
@@ -358,23 +360,28 @@ label {
     text-align: center; 
     font-weight: 2px; 
   }
+
   .grocery-list li {
     margin: 5px;
     padding: 5px;
     font-size: 1.2em;
     width: 230px;
   }
+
   .grocery-list li.placeholder {
     height: 1.2em
   }
+
   .item {
     border: 1px solid #bbb;
     background-color: #fafafa;
     cursor: pointer;
   }
+
   .item.ui-sortable-helper {
     opacity: 0.5;
   }
+  
   .placeholder {
     border: 1px solid orange;
     background-color: #fffffd;
