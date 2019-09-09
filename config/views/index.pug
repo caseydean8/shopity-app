@@ -31,7 +31,9 @@ html
         link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
         |
         // JQuery & Java
-        script(src='ttp://code.jquery.com/jquery-3.3.1.min.js')
+        script(src='http://code.jquery.com/jquery-3.3.1.min.js')
+        script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+        script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
         script(src='assets/javascript/app.js')
     body
 
@@ -51,7 +53,7 @@ html
                     = ' '
                     input(type='password' name='' placeholder='Password')
                     br
-                    button(type='button' name='signin') Sign in
+                    button(type='button' id='signin') Sign in
                     br
                     hr
                     br
@@ -62,7 +64,7 @@ html
                     = ' '
                     input(type='password' name='' placeholder='Create Password')
                     br
-                    button(type='button' name='create') Create Account
+                    button(type='button' id='create') Create Account
                 
             
 
@@ -75,12 +77,9 @@ html
                 a.active(href='#home') Home
                 | &nbsp&nbsp&nbsp&nbsp
                 |             
-                a(href='#contact') Contact
+                a(href='#myAccount') My Account
                 | &nbsp&nbsp&nbsp&nbsp
-                |             
-                a(href='#about') About
-                | &nbsp&nbsp&nbsp&nbsp
-                |             
+                |                      
                 a(href='#cart')
                 i.fas.fa-shopping-cart
                 | &nbsp&nbsp&nbsp&nbsp   
@@ -215,10 +214,13 @@ html
                         br
                         br
                         br
+                        //- .fab.fa-facebook-f
+                        //- .fab.fa-linkedin-in
+                        //- .fab.fa-twitter
 
         .footer-margin
             .card-footer
-            img(src='assets/images/footerlogo.png', alt='footer')
+            img#footerLogo(src='assets/images/footerlogo.png', alt='footer')
             br
             | Copyright 2019 
             br
