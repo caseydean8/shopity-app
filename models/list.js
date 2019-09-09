@@ -23,9 +23,6 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-  };
-
-  List.associate = models => {
     List.belongsTo(models.user, {
       foreignKey: {
         allowNull: false

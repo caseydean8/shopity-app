@@ -9,17 +9,23 @@ module.exports = app => {
 
   // Load example page and pass in an example by id
   app.get("/user", isAuthenticated, (req, res) => {
-    // res.render("user-home");
     db.list
       .findAll({
         where: {
           userId: req.user.id
-        }
+        },
+        include: [db.item]
       })
       .then(data => {
-        // res.render ("user", data)
-        // simply returning the user's list as JSON for now, until the user page it built.
-        res.json(data);
+        // res.render("user", data);
+        // just rendering the page at the moment, will udate to include data once the pug file is complete.
+        console.lof(data);
+        res.render("user");
+        // res.json(data);
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/");
       });
   });
 
