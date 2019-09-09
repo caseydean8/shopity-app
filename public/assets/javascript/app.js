@@ -25,17 +25,17 @@ $(document).ready(function() {
 
 //click to get to home page
 $("#home").on('click', function(){
-    window.location = "index.html";    
+    window.location = "index";    
   });
   
   // click to get to user page
   $("#signin").on('click', function(){
-    window.location = "user.html";    
+    window.location = "user";    
   });
   
   // click to get to user page
   $("#myAccount").on('click', function(){
-    window.location = "user.html";    
+    window.location = "user";    
   });
   
   //// user page 
