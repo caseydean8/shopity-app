@@ -19,7 +19,7 @@ module.exports = app => {
       .then(data => {
         // res.render("user", data);
         // just rendering the page at the moment, will udate to include data once the pug file is complete.
-        console.lof(data);
+        console.log(data);
         res.render("user");
         // res.json(data);
       })
@@ -27,6 +27,10 @@ module.exports = app => {
         console.log(err);
         res.redirect("/");
       });
+  });
+
+  app.get("/usertest", (req, res) => {
+    res.render("user");
   });
 
   // Load example page and pass in an example by id
