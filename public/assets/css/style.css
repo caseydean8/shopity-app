@@ -54,6 +54,16 @@ a {
     height: 100%
 }
 
+.list1 { 
+    background-image: url("assets/images/list1.jpg"); 
+    height: 100% 
+}
+
+.list2 { 
+    background-image: url("assets/images/list2.jpg"); 
+    height: 100% 
+}
+
 #tagline {
     margin: 0 auto;
     margin-top: 60px;
@@ -159,7 +169,7 @@ a {
 
 .footer-margin {
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     color: black;
     font-size: 12px;
     background-color: white;
@@ -259,9 +269,6 @@ button {
     color: white;
 }
 
-
-/* ////// NEW */
-
 .bg-image-color3 {
     background-color: black;
     opacity: 0.85;
@@ -302,3 +309,92 @@ p2 {
 #image-holder {
     padding: 1rem;
 }
+
+/* // NEW 9.9.2019 */
+
+#welcome, #user {
+    color: white; 
+    font-size: 60px; 
+    font-family: 'Abel', sans-serif;
+    margin-top: 30px; 
+}
+
+label {
+    color: white;
+    font-size: 20px; 
+    font-family: 'Abel', sans-serif;
+    margin: 0 auto; 
+}
+
+.shop-container{
+    width: 330px;
+  }
+  .right {
+    float: right;
+  }
+  .left {
+    float: left;
+  }
+  p {
+    clear: both;
+    padding-top: 1em;
+    color: white; 
+    font-size: 15px; 
+    font-family: 'Abel', sans-serif;
+    margin-left: -15px; 
+  }
+  .grocery-list {
+    list-style-type: none;
+    font-family: 'Abel', sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    background: #eee;
+    padding: 5px;
+    width: 250px;
+    border-radius: 10px; 
+    /* min-height: 1.5em; */
+    font-size: 1em;
+    text-align: center; 
+    font-weight: 2px; 
+  }
+  .grocery-list li {
+    margin: 5px;
+    padding: 5px;
+    font-size: 1.2em;
+    width: 230px;
+  }
+  .grocery-list li.placeholder {
+    height: 1.2em
+  }
+  .item {
+    border: 1px solid #bbb;
+    background-color: #fafafa;
+    cursor: pointer;
+  }
+  .item.ui-sortable-helper {
+    opacity: 0.5;
+  }
+  .placeholder {
+    border: 1px solid orange;
+    background-color: #fffffd;
+  }
+
+  .fa-linkedin-in {
+      float: right; 
+      font-size: 23px; 
+      margin-right: 10px; 
+  }
+
+  .fa-facebook-f {
+    float: right; 
+    font-size: 19px; 
+    margin-right: 10px; 
+  }
+
+ .fa-twitter {
+    float: right; 
+    font-size: 19px; 
+    margin-right: 10px;
+ }
+

@@ -13,17 +13,6 @@ $(document).ready(function() {
             $("#popup-box").fadeIn("fast", () => {});
         });
 
-        $("button[name=subscribe]").click(() => {
-            $.ajax({
-                type: "POST",
-                url: $("#popup-form").attr("action"),
-                data: $("#popup-form").serialize(),
-                success: (data) => {
-                    $("#popup-box-content").html("<p style='text-align: center'>Thank you for subscribing to Shopify!</p>");
-                }
-            });
-        });
-
         $("#popup-close").click(() => {
             $("#list-builder, #popup-box").hide();
             localStorage.setItem("list-builder", (new Date()).getTime());
@@ -31,3 +20,46 @@ $(document).ready(function() {
     }
 
 });
+
+// NEW 9.9.2019
+
+//click to get to home page
+$("#home").on('click', function(){
+    window.location = "index.html";    
+  });
+  
+  // click to get to user page
+  $("#signin").on('click', function(){
+    window.location = "user.html";    
+  });
+  
+  // click to get to user page
+  $("#myAccount").on('click', function(){
+    window.location = "user.html";    
+  });
+  
+  //// user page 
+  $(function() {
+      $("#allGroceries, #userGroceries").sortable({
+        connectWith: "ul",
+        placeholder: "placeholder",
+        delay: 150
+      })
+      .disableSelection()
+      .dblclick( function(e){
+        var item = e.target;
+        if (e.currentTarget.id === 'allGroceries') {
+          //move from all to user
+          $(item).fadeOut('fast', function() {
+            $(item).appendTo($('#userGroceries')).fadeIn('slow');
+          });
+        } else {
+          //move from user to all
+          $(item).fadeOut('fast', function() {
+            $(item).appendTo($('#allGroceries')).fadeIn('slow');
+          });
+        }
+      });
+    });
+
+    // NEW 9.9.2019 
