@@ -50,7 +50,7 @@ module.exports = app => {
 
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
   app.post("/login", passport.authenticate("local"), (req, res) => {
-    res.redirect("/user");
+    res.status(200).json({ login: "successful" });
   });
 
   // Route for logging user out
@@ -88,5 +88,11 @@ module.exports = app => {
           });
         }
       });
+  });
+
+  app.get("/api/examples", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
+    });
   });
 };
