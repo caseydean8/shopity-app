@@ -55,12 +55,12 @@ a {
 }
 
 .list1 { 
-    background-image: url("assets/images/list1.jpg"); 
+    background-image: url("/assets/images/list1.jpg"); 
     height: 100% 
 }
 
 .list2 { 
-    background-image: url("assets/images/list2.jpg"); 
+    background-image: url("/assets/images/list2.jpg"); 
     height: 100% 
 }
 
@@ -74,9 +74,8 @@ a {
 
 #tagline2 {
     float: left;
-    margin-top: 50px;
     font-family: 'Abel', sans-serif;
-    font-size: 27px;
+    font-size: 23px;
     color: black;
 }
 
@@ -100,7 +99,15 @@ a {
     font-family: 'Raleway Dots', cursive;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+#tagline6 {
+    float: right; 
+    margin-left: 100px; 
+    font-family: 'Abel', sans-serif;
+    font-size: 22px; 
+    color: black;
 }
 
 .triple-box {
@@ -127,7 +134,8 @@ a {
 
 .fa-quote-left,
 .fa-quote-right {
-    font-size: 28px;
+    font-size: 21px;
+    color: gray;
 }
 
 .fa-quote-left {
@@ -193,10 +201,9 @@ a {
 
 .bg-white {
     background-color: white;
+    height: 100%; 
+    padding: 40px; 
 }
-
-
-/* ////// NEW */
 
 #list-builder {
     z-index: 10;
@@ -335,14 +342,16 @@ label {
   .left {
     float: left;
   }
+
   p {
     clear: both;
     padding-top: 1em;
     color: white; 
-    font-size: 15px; 
+    font-size: 16px; 
     font-family: 'Abel', sans-serif;
-    margin-left: -15px; 
+    margin-left: 190px;  
   }
+
   .grocery-list {
     list-style-type: none;
     font-family: 'Abel', sans-serif;
@@ -358,23 +367,28 @@ label {
     text-align: center; 
     font-weight: 2px; 
   }
+
   .grocery-list li {
     margin: 5px;
     padding: 5px;
     font-size: 1.2em;
     width: 230px;
   }
+
   .grocery-list li.placeholder {
     height: 1.2em
   }
+
   .item {
     border: 1px solid #bbb;
     background-color: #fafafa;
     cursor: pointer;
   }
+
   .item.ui-sortable-helper {
     opacity: 0.5;
   }
+  
   .placeholder {
     border: 1px solid orange;
     background-color: #fffffd;
@@ -398,3 +412,18 @@ label {
     margin-right: 10px;
  }
 
+ #member {
+    font-size: 19px; 
+    font-family: 'Abel', sans-serif;
+    color: green; 
+    float: right; 
+}
+
+#star {
+    color: lightgray;
+}
+
+#reviews {
+    font-size: 50px; 
+    font-weight: bold; 
+}

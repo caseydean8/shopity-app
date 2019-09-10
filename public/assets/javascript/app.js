@@ -26,6 +26,7 @@ $(document).ready(function() {
   //click to get to home page
   $("#home").on("click", function() {
     window.location = "index.html";
+
   });
 
   // click to get to user page
