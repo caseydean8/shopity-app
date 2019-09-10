@@ -74,9 +74,8 @@ a {
 
 #tagline2 {
     float: left;
-    margin-top: 50px;
     font-family: 'Abel', sans-serif;
-    font-size: 27px;
+    font-size: 23px;
     color: black;
 }
 
@@ -100,7 +99,15 @@ a {
     font-family: 'Raleway Dots', cursive;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+#tagline6 {
+    float: right; 
+    margin-left: 100px; 
+    font-family: 'Abel', sans-serif;
+    font-size: 22px; 
+    color: black;
 }
 
 .triple-box {
@@ -127,7 +134,8 @@ a {
 
 .fa-quote-left,
 .fa-quote-right {
-    font-size: 28px;
+    font-size: 21px;
+    color: gray;
 }
 
 .fa-quote-left {
@@ -193,10 +201,9 @@ a {
 
 .bg-white {
     background-color: white;
+    height: 100%; 
+    padding: 40px; 
 }
-
-
-/* ////// NEW */
 
 #list-builder {
     z-index: 10;
@@ -405,3 +412,18 @@ label {
     margin-right: 10px;
  }
 
+ #member {
+    font-size: 19px; 
+    font-family: 'Abel', sans-serif;
+    color: green; 
+    float: right; 
+}
+
+#star {
+    color: lightgray;
+}
+
+#reviews {
+    font-size: 50px; 
+    font-weight: bold; 
+}
