@@ -17,16 +17,17 @@ module.exports = app => {
 
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
+    console.log(req.body);
     db.user
       // create a new user in the users table
       .create(req.body)
       .then(() => {
         // redirect the new user to the login route
-        res.redirect(307, "/login");
+        res.json(req.body).redirect(307, "/login");
       })
       .catch(err => {
         // if there is an error, return the error
-        res.status(401), json(err);
+        res.json(err);
       });
   });
 
