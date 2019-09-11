@@ -25,7 +25,12 @@ $(document).ready(function() {
 
   //click to get to home page
   $("#home").on("click", function() {
-    window.location = "index.html";
+    window.location = "/";
+  });
+
+  // click to get to user page
+  $("#myAccount").on("click", function() {
+    window.location = "/user";
   });
 
   // click to get to user page
@@ -34,18 +39,17 @@ $(document).ready(function() {
     user.username = $("#username").val();
     user.password = $("#password").val();
     $.post("/login", user).then(response => {
-      console.log("response:");
-      console.log(response);
       if (response.status === "success") {
         window.location = "/user";
+      } else {
+        console.log(response);
+        // display the response.message in the appropriate div to show the user why the login didnt work
       }
-      // else if (response = 404)
     });
   });
 
-  // click to get to user page
-  $("#myAccount").on("click", function() {
-    window.location = "user.html";
+  $("#create").on("click", () => {
+    alert("create account clicked");
   });
 
   //// user page
