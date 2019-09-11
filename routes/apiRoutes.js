@@ -49,8 +49,21 @@ module.exports = app => {
   });
 
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
-  app.post("/login", passport.authenticate("local"), (req, res) => {
-    res.status(200).json({ login: "successful" });
+  app.post("/login", function(req, res, next) {
+    passport.authenticate("local", function(err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return res.json(info);
+      }
+      req.logIn(user, function(err) {
+        if (err) {
+          return next(err);
+        }
+        return res.status(200).json({ status: "success" });
+      });
+    })(req, res, next);
   });
 
   // Route for logging user out

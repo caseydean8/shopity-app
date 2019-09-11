@@ -26,7 +26,6 @@ $(document).ready(function() {
   //click to get to home page
   $("#home").on("click", function() {
     window.location = "index.html";
-
   });
 
   // click to get to user page
@@ -34,12 +33,13 @@ $(document).ready(function() {
     let user = {};
     user.username = $("#username").val();
     user.password = $("#password").val();
-    console.log(user);
     $.post("/login", user).then(response => {
+      console.log("response:");
       console.log(response);
-      if ((response.login = "good")) {
+      if (response.status === "success") {
         window.location = "/user";
       }
+      // else if (response = 404)
     });
   });
 
