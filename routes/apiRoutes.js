@@ -19,6 +19,7 @@ module.exports = app => {
   app.post("/api/adduser", (req, res) => {
     console.log(req.body);
     db.user
+      // check to make sure the username is not a duplicate
       // create a new user in the users table
       .create(req.body)
       .then(() => {
