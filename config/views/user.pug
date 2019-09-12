@@ -1,107 +1,71 @@
-doctype html
+include head
 
-html
-    head
-        meta(charset='UTF-8')
-        |     
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        |     
-        meta(http-equiv='X-UA-Compatible', content='ie=edge')
-        |     
-        title NCN SHOPIFY
-        // Bootstrap
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
-        // CSS
-        link(rel='stylesheet', href='/assets/css/style.css')
-        // jQuery
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-        // Google Fonts
-        |
-        link(href='https://fonts.googleapis.com/css?family=Caveat|Abel|Nanum+Pen+Script|Acme|Raleway+Dots|Chilanka|Sacramento&display=swap', rel='stylesheet')
-        // Font Awesome Icons
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.0/css/all.css')     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css')
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
-        |     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
-        |
-        // JQuery & Java
-        script(src='http://code.jquery.com/jquery-3.3.1.min.js')
-        script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
-        script(src='assets/javascript/app.js')
-    body
-
-        .jumbotron
-            #logo
-                img(src='/assets/images/logo7.png', alt='logo')
-            |         
-            .topnav
-                
-                a.active(href='/') Home
-                | &nbsp&nbsp&nbsp&nbsp
-                |             
-                a(href='/user') My Account
-                | &nbsp&nbsp&nbsp&nbsp
-                |                      
-                a(href='/user')
-                i.fas.fa-shopping-cart
-                | &nbsp&nbsp&nbsp&nbsp   
+block user
+    .jumbotron
+        #logo
+            img(src='/assets/images/logo7.png', alt='logo')
+        |         
+        .topnav
             
-        .bg-image.list1
-            .container 
-                .row
-                #welcome Welcome Back, 
-                #user 
-            p
-                | *Drag &amp; drop to rearrange items within grocery lists or between lists.
-                br
-                | Double-click to move item from one list to the bottom of the other.
-                br
-                br
-
-        .bg-image-color3 
-            br
-            .container
-                .row
-                    .lg-col-4
-                        .grocery-add
-                            label Add to List:
-                            form(class="create-form" action="/api/newitem" method="POST")
-                                .form-group
-                                    //- label Burger Name:
-                                    input(type="text" name="item")
-                                    br
-                                    label Add Category
-                                    br
-                                    input(type="text" name="category")
-                                    br
-                                    button(type="submit") Add it
-                    .lg-col-4
-                        .left
-                            label Add to List:
-                            ul#allGroceries.grocery-list
-                                li.item Milk
-                                li.item Coffee
-                                li.item Pasta
-                                li.item Rice
-                                li.item Hamburgers
-                                li.item Hot Dogs 
-                                li.item Toilet Paper
-                                li.item Apple Juice
-                                li.item Gatorade
-                                li.item Pretzels
-                                li.item Seltzer 
+            a.active(href='/') Home
+            | &nbsp&nbsp&nbsp&nbsp
+            |             
+            a(href='/user') My Account
+            | &nbsp&nbsp&nbsp&nbsp
+            |                      
+            a(href='/user')
+            i.fas.fa-shopping-cart
+            | &nbsp&nbsp&nbsp&nbsp   
         
-                    .lg-col-4
-                        .right 
-                            label Your Shopping List: 
-                            ul#userGroceries.grocery-list
-                                li.item Toilet Paper
-                                li.item Paper Plates
-                                li.item Trail Mix
+    .bg-image.list1
+        .container 
+            .row
+            #welcome Welcome Back, 
+            #user 
+        p
+            | *Drag &amp; drop to rearrange items within grocery lists or between lists.
+            br
+            | Double-click to move item from one list to the bottom of the other.
+            br
+            br
+
+    .bg-image-color3 
+        br
+        .container
+            .row
+                .lg-col-4
+                    .grocery-add
+                        label Add to List:
+                        form(class="create-form" action="/api/newitem" method="POST")
+                            .form-group
+                                //- label Burger Name:
+                                input(type="text" name="item")
+                                br
+                                label Add Category
+                                br
+                                input(type="text" name="category")
+                                br
+                                button(type="submit") Add it
+                .lg-col-4
+                    .left
+                        label Add to List:
+                        ul#allGroceries.grocery-list
+                            li.item Milk
+                            li.item Coffee
+                            li.item Pasta
+                            li.item Rice
+                            li.item Hamburgers
+                            li.item Hot Dogs 
+                            li.item Toilet Paper
+                            li.item Apple Juice
+                            li.item Gatorade
+                            li.item Pretzels
+                            li.item Seltzer 
+    
+                .lg-col-4
+                    .right 
+                        label Your Shopping List: 
+                        ul#userGroceries.grocery-list
+                            li.item Toilet Paper
+                            li.item Paper Plates
+                            li.item Trail Mix
