@@ -3,15 +3,27 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = app => {
-  app.post("/api/userlist", isAuthenticated, (req, res) => {
-    // this route finds all list items for the authenticated user
+  app.get("/api/userlist", isAuthenticated, (req, res) => {
+    // this route finds all list items for the authenticated user, and returns them as a JSON object
+    let data = {};
+    data.user = {};
+    data.user.firstName = req.user.firstName;
+    data.user.lastName = req.user.lastName;
+    data.user.username = req.user.username;
+
     db.list
       .findAll({
-        where: { userId: req.user.id }
+        where: {
+          userId: req.user.id
+        },
+        include: [db.item]
       })
       .then(userList => {
-        // return the list as an array of objects in JSON format
-        res.json(userList);
+        data.userList = userList;
+        db.item.findAll({}).then(items => {
+          data.items = items;
+          res.json(data);
+        });
       });
   });
 
@@ -55,8 +67,9 @@ module.exports = app => {
       newListItem.itemID = newItem.id;
       newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
       newListItem.inCart = false;
+      // eslint-disable-next-line no-unused-vars
       db.list.create(newListItem).then(response => {
-        // return the list item we just created.
+        // redirect the user back to the /user route to redisplay the list with the new item added.
         res.redirect("/user");
       });
     });
