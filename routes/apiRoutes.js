@@ -18,22 +18,34 @@ module.exports = app => {
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
     console.log(req.body);
+    // check to make sure the username is not a duplicate
     db.user
-      // check to make sure the username is not a duplicate
-      // create a new user in the users table
-      .create(req.body)
-      .then(() => {
-        // redirect the new user to the login route
-        res.json(req.body).redirect(307, "/login");
-      })
-      .catch(err => {
-        // if there is an error, return the error
-        res.json(err);
+      .findOne({ where: { username: req.body.username } })
+      .then(response => {
+        console.log(req.body.username);
+        console.log("Response is below:");
+        console.log(response);
+        if (response) {
+          res.json({ status: "Username already exists." });
+        } else {
+          db.user
+            // create a new user in the users table
+            .create(req.body)
+            .then(() => {
+              // redirect the new user to the login route
+              res.json(req.body);
+            })
+            .catch(err => {
+              // if there is an error, return the error
+              res.json(err);
+            });
+        }
       });
   });
 
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
+    console.log(req.body);
     // use the req.body object to create a new entry in the items table
     db.item.create(req.body).then(newItem => {
       // after that item is created, add it to the list table for the user
@@ -45,7 +57,7 @@ module.exports = app => {
       newListItem.inCart = false;
       db.list.create(newListItem).then(response => {
         // return the list item we just created.
-        res.json(response);
+        res.redirect("/user");
       });
     });
   });
