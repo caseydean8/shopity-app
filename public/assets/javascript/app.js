@@ -52,11 +52,27 @@ $(document).ready(function() {
     let newUser = {};
     newUser.firstName = $("#first-name").val();
     newUser.lastName = $("#last-name").val();
-    newUser.username = $("#username").val();
+    newUser.username = $("#new-username").val();
     newUser.password = $("#new-password").val();
-    console.log(newUser);
     $.post("/api/adduser", newUser).then(response => {
-      console.log(response);
+      // if we had success creating the new user and the user object is returned to us
+      if (response.firstName === newUser.firstName) {
+        // redirect the user to the login route
+        console.log("Calling post route to /login");
+        $.post("/login", newUser).then(response => {
+          console.log("inside post route");
+          if (response.status === "success") {
+            window.location = "/user";
+          } else {
+            console.log(response);
+            // display the response.message in the appropriate div to show the user why the login didnt work
+          }
+        });
+      } else {
+        if (response.errors) {
+          console.log(response.errors);
+        }
+      }
     });
   });
 
@@ -74,6 +90,7 @@ $(document).ready(function() {
         if (e.currentTarget.id === "allGroceries") {
           //move from all to user
           $(item).fadeOut("fast", function() {
+            console.log("move to user list");
             $(item)
               .appendTo($("#userGroceries"))
               .fadeIn("slow");
@@ -81,6 +98,7 @@ $(document).ready(function() {
         } else {
           //move from user to all
           $(item).fadeOut("fast", function() {
+            console.log("take off of user list.");
             $(item)
               .appendTo($("#allGroceries"))
               .fadeIn("slow");
