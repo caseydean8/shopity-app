@@ -10,6 +10,7 @@ module.exports = app => {
   // Load example page and pass in an example by id
   app.get("/user", isAuthenticated, (req, res) => {
     console.log(req.user.firstName);
+
     let data = {};
     data.user = {};
     data.user.firstName = req.user.firstName;
