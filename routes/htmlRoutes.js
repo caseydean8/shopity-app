@@ -9,6 +9,13 @@ module.exports = app => {
 
   // Load example page and pass in an example by id
   app.get("/user", isAuthenticated, (req, res) => {
+    console.log(req.user.firstName);
+    let data = {};
+    data.user = {};
+    data.user.firstName = req.user.firstName;
+    data.user.lastName = req.user.lastName;
+    data.user.username = req.user.username;
+
     db.list
       .findAll({
         where: {
@@ -16,12 +23,15 @@ module.exports = app => {
         },
         include: [db.item]
       })
-      .then(data => {
-        // res.render("user", data);
-        // just rendering the page at the moment, will udate to include data once the pug file is complete.
-        console.log(data);
-        res.render("user");
-        // res.json(data);
+      .then(userList => {
+        data.userList = userList;
+        db.item.findAll({}).then(items => {
+          data.items = items;
+          // just rendering the page at the moment, will udate to include data once the pug file is complete.
+          res.render("user");
+          // res.render("user", data);
+          // res.json(data);
+        });
       })
       .catch(err => {
         console.log(err);
