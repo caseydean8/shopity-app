@@ -64,7 +64,7 @@ html
                     = ' '
                     input(type='text' id='username' placeholder='Email Address')
                     = ' '
-                    input(type='password' id='password' placeholder='Create Password')
+                    input(type='password' id='new-password' placeholder='Create Password')
                     br
                     button(type='button' id='create') Create Account
                 
@@ -76,13 +76,13 @@ html
             |         
             .topnav
                 
-                a.active(href='#home') Home
+                a.active(href='/') Home
                 | &nbsp&nbsp&nbsp&nbsp
                 |             
-                a(href='#myAccount') My Account
+                a(href='/user') My Account
                 | &nbsp&nbsp&nbsp&nbsp
                 |                      
-                a(href='#cart')
+                a(href='/user')
                 i.fas.fa-shopping-cart
                 | &nbsp&nbsp&nbsp&nbsp   
             

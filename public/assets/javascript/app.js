@@ -49,7 +49,15 @@ $(document).ready(function() {
   });
 
   $("#create").on("click", () => {
-    alert("create account clicked");
+    let newUser = {};
+    newUser.firstName = $("#first-name").val();
+    newUser.lastName = $("#last-name").val();
+    newUser.username = $("#username").val();
+    newUser.password = $("#new-password").val();
+    console.log(newUser);
+    $.post("/api/adduser", newUser).then(response => {
+      console.log(response);
+    });
   });
 
   //// user page
