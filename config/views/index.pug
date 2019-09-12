@@ -25,46 +25,28 @@ block index
                 = ' '
                 input(type='text' id='last-name' placeholder='Last Name') 
                 = ' '
-                input(type='text' id='username' placeholder='Email Address')
+                input(type='text' id='new-username' placeholder='Email Address')
                 = ' '
                 input(type='password' id='new-password' placeholder='Create Password')
                 br
                 button(type='button' id='create') Create Account
-        #list-builder
-            #popup-box 
-                img#popup-close(src='assets/images/close.png')
-                #popup-box-content 
-                h1 Sign-in or Create Account
-                p 
-                    | Stay up to date on the latest in the shopify app, plus receive exclusive coupons by
-                    | subscribing to our newsletter. 
-                    br
-                    br
-                form#popup-form(action='https://email_list_service_api.com')
-                    input(type='hidden' name='list' value='key_list_etc') 
-                    input(type='text' id='username' placeholder='Email Address') 
-                    = ' '
-                    input(type='password' id='password' placeholder='Password')
-                    br
-                    button(type='button' id='signin') Sign in
-                    br
-                    hr
-                    br
-                    input(type='hidden' name='list' value='key_list_etc')
-                    input(type='text' id='first-name' placeholder='First Name') 
-                    = ' '
-                    input(type='text' id='last-name' placeholder='Last Name') 
-                    = ' '
-                    input(type='text' id='new-username' placeholder='Email Address')
-                    = ' '
-                    input(type='password' id='new-password' placeholder='Create Password')
-                    br
-                    button(type='button' id='create') Create Account
                
+
+    .jumbotron
+        #logo
+            img(src='/assets/images/logo7.png', alt='logo')
+        |         
+        .topnav
             
-        
-include jumbo
-block content   
+            a.active(href='/') Home
+            | &nbsp&nbsp&nbsp&nbsp
+            |             
+            a(href='/user') My Account
+            | &nbsp&nbsp&nbsp&nbsp
+            |                      
+            a(href='/user')
+            i.fas.fa-shopping-cart
+            | &nbsp&nbsp&nbsp&nbsp   
         
     .bg-image.aisle2
         .container
@@ -170,38 +152,38 @@ block content
         .container
         .row 
         #reviews
-        | RATES AND REVIEWS
-        br
-        br
+           | Rates and Reviews
+           br
+           
 
         .row 
             .lg-col-6
             #tagline2
-            i.fas.fa-quote-left
-            | &nbspVery simple to use. I have an easier time finding things
-            br
-            | while shopping and helps me prepare meals for my family&nbsp
-            i.fas.fa-quote-right
-            br
-            #member - Ronessa, a member since 5/19
-            img(src='/assets/images/ronessa.png')
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            br
-            br
-            hr
+                i.fas.fa-quote-left
+                |  &nbspVery simple to use. I have an easier time finding things
+                br
+                |  while shopping and helps me prepare meals for my family&nbsp
+                i.fas.fa-quote-right
+                br
+                #member - Ronessa, a member since 5/19
+                img(src='/assets/images/ronessa.png')
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                br
+                br
+                hr
 
             .lg-col-6
             #tagline6
                 i.fas.fa-quote-left
-                |   &nbspShopify is so convenient. 
-                |          No more aimless wandering 
+                |  &nbspShopify is so convenient. 
+                |  No more aimless wandering 
                 br
-                |   around the grocery store aisles. 
-                |               I save money this way.&nbsp
+                |  around the grocery store aisles. 
+                |  I save money this way.&nbsp
                 i.fas.fa-quote-right
                 br
                 #member - Aaron, a member since 1/19
@@ -218,17 +200,17 @@ block content
             .row 
             .lg-col-6
             #tagline2
-            i.fas.fa-quote-left
-            | &nbspPretty simple to use and follow along with while shopping&nbsp
-            i.fas.fa-quote-right
-            br
-            #member - Bryan, a member since 8/19
-            img(src='/assets/images/bryan.png')
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span#star.fa.fa-star.fa-xs
+                i.fas.fa-quote-left
+                |   &nbspPretty simple to use and follow along with while shopping&nbsp
+                i.fas.fa-quote-right
+                br
+                #member - Bryan, a member since 8/19
+                img(src='/assets/images/bryan.png')
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span#star.fa.fa-star.fa-xs
 
             .lg-col-6
             #tagline6
