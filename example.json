@@ -1,0 +1,115 @@
+{
+    "user": 
+    {
+        "firstName": "Nathan",
+        "lastName": "Hill",
+        "username": "pjsstp@gmail.com"
+    },
+    "userList": [
+        {
+            "id": 3,
+            "onList": true,
+            "inCart": false,
+            "inactive": false,
+            "createdAt": "2019-09-11T19:58:16.000Z",
+            "updatedAt": "2019-09-11T19:58:16.000Z",
+            "itemId": null,
+            "userId": 2,
+            "item": null
+        },
+        {
+            "id": 4,
+            "onList": true,
+            "inCart": false,
+            "inactive": false,
+            "createdAt": "2019-09-12T13:12:02.000Z",
+            "updatedAt": "2019-09-12T13:12:02.000Z",
+            "itemId": null,
+            "userId": 2,
+            "item": null
+        },
+        {
+            "id": 5,
+            "onList": true,
+            "inCart": false,
+            "inactive": false,
+            "createdAt": "2019-09-12T14:48:05.000Z",
+            "updatedAt": "2019-09-12T14:48:05.000Z",
+            "itemId": null,
+            "userId": 2,
+            "item": null
+        }
+    ],
+    "items": [
+        {
+            "id": 1,
+            "name": "Eggs",
+            "category": "Dairy",
+            "createdAt": "2019-08-31T14:36:30.000Z",
+            "updatedAt": "2019-08-31T14:36:30.000Z"
+        },
+        {
+            "id": 2,
+            "name": "Milk",
+            "category": "Dairy",
+            "createdAt": "2019-08-31T14:36:38.000Z",
+            "updatedAt": "2019-08-31T14:36:38.000Z"
+        },
+        {
+            "id": 3,
+            "name": "Apples",
+            "category": "Produce",
+            "createdAt": "2019-08-31T14:36:52.000Z",
+            "updatedAt": "2019-08-31T14:36:52.000Z"
+        },
+        {
+            "id": 4,
+            "name": "Ice Cream",
+            "category": "Frozen Food",
+            "createdAt": "2019-08-31T14:37:09.000Z",
+            "updatedAt": "2019-08-31T14:37:09.000Z"
+        },
+        {
+            "id": 5,
+            "name": "Coffee",
+            "category": "Drinks",
+            "createdAt": "2019-08-31T14:37:31.000Z",
+            "updatedAt": "2019-08-31T14:37:31.000Z"
+        },
+        {
+            "id": 6,
+            "name": "Chips",
+            "category": "Snacks",
+            "createdAt": "2019-09-06T17:11:18.000Z",
+            "updatedAt": "2019-09-06T17:11:18.000Z"
+        },
+        {
+            "id": 7,
+            "name": "Chips",
+            "category": "Snacks",
+            "createdAt": "2019-09-06T17:12:12.000Z",
+            "updatedAt": "2019-09-06T17:12:12.000Z"
+        },
+        {
+            "id": 8,
+            "name": "Spaghetti",
+            "category": "Pasta",
+            "createdAt": "2019-09-11T19:58:16.000Z",
+            "updatedAt": "2019-09-11T19:58:16.000Z"
+        },
+        {
+            "id": 9,
+            "name": "Lemonade",
+            "category": "Drinks",
+            "createdAt": "2019-09-12T13:12:02.000Z",
+            "updatedAt": "2019-09-12T13:12:02.000Z"
+        },
+        {
+            "id": 10,
+            "name": "Bourbon",
+            "category": "Spirits",
+            "createdAt": "2019-09-12T14:48:05.000Z",
+            "updatedAt": "2019-09-12T14:48:05.000Z"
+        }
+    ]
+}
