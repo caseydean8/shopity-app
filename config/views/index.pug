@@ -33,22 +33,8 @@ block index
                 button(type='button' id='create') Create Account
             
         
-
-    .jumbotron
-        #logo
-            img(src='/assets/images/logo7.png', alt='logo')
-        |         
-        .topnav
-            
-            a.active(href='/') Home
-            | &nbsp&nbsp&nbsp&nbsp
-            |             
-            a(href='/user') My Account
-            | &nbsp&nbsp&nbsp&nbsp
-            |                      
-            a(href='/user')
-            i.fas.fa-shopping-cart
-            | &nbsp&nbsp&nbsp&nbsp   
+include jumbo
+block content   
         
     .bg-image.aisle2
         .container
