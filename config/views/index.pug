@@ -1,42 +1,35 @@
-doctype html
-
-html
-    head
-        meta(charset='UTF-8')
-        |     
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        |     
-        meta(http-equiv='X-UA-Compatible', content='ie=edge')
-        |     
-        title NCN SHOPIFY
-        // Bootstrap
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
-        // CSS
-        link(rel='stylesheet', href='/assets/css/style.css')
-        // jQuery
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-        // Google Fonts
-        |
-        link(href='https://fonts.googleapis.com/css?family=Caveat|Abel|Nanum+Pen+Script|Acme|Raleway+Dots|Chilanka|Sacramento&display=swap', rel='stylesheet')
-        // Font Awesome Icons
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.0/css/all.css')     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css')
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
-        |     
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.7.0/css/all.css', integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ', crossorigin='anonymous')
-        |
-        // JQuery & Java
-        script(src='http://code.jquery.com/jquery-3.3.1.min.js')
-        script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
-        script(src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js')
-        script(src='assets/javascript/app.js')
-    body
-
+include head
+block index
+    #list-builder
+        #popup-box 
+            img#popup-close(src='assets/images/close.png')
+            #popup-box-content 
+            h1 Sign-in or Create Account
+            p 
+                | Stay up to date on the latest in the shopify app, plus receive exclusive coupons by
+                | subscribing to our newsletter. 
+                br
+                br
+            form#popup-form(action='https://email_list_service_api.com')
+                input(type='hidden' name='list' value='key_list_etc') 
+                input(type='text' id='username' placeholder='Email Address') 
+                = ' '
+                input(type='password' id='password' placeholder='Password')
+                br
+                button(type='button' id='signin') Sign in
+                br
+                hr
+                br
+                input(type='hidden' name='list' value='key_list_etc')
+                input(type='text' id='first-name' placeholder='First Name') 
+                = ' '
+                input(type='text' id='last-name' placeholder='Last Name') 
+                = ' '
+                input(type='text' id='username' placeholder='Email Address')
+                = ' '
+                input(type='password' id='new-password' placeholder='Create Password')
+                br
+                button(type='button' id='create') Create Account
         #list-builder
             #popup-box 
                 img#popup-close(src='assets/images/close.png')
@@ -67,144 +60,166 @@ html
                     input(type='password' id='new-password' placeholder='Create Password')
                     br
                     button(type='button' id='create') Create Account
-                
+               
             
+        
 
-        .jumbotron
-            #logo
-                img(src='/assets/images/logo7.png', alt='logo')
-            |         
-            .topnav
-                
-                a.active(href='/') Home
-                | &nbsp&nbsp&nbsp&nbsp
-                |             
-                a(href='/user') My Account
-                | &nbsp&nbsp&nbsp&nbsp
-                |                      
-                a(href='/user')
-                i.fas.fa-shopping-cart
-                | &nbsp&nbsp&nbsp&nbsp   
+    .jumbotron
+        #logo
+            img(src='/assets/images/logo7.png', alt='logo')
+        |         
+        .topnav
             
-        .bg-image.aisle2
-            .container
-                .row
-                    #tagline
-                        | Shopping Made Easy
-                br
-                |             
-                .row
-                    div#box1.triple-box
-                        i.far.fa-list-alt
+            a.active(href='/') Home
+            | &nbsp&nbsp&nbsp&nbsp
+            |             
+            a(href='/user') My Account
+            | &nbsp&nbsp&nbsp&nbsp
+            |                      
+            a(href='/user')
+            i.fas.fa-shopping-cart
+            | &nbsp&nbsp&nbsp&nbsp   
+        
+    .bg-image.aisle2
+        .container
+            .row
+                #tagline
+                    | Shopping Made Easy
+            br
+            |             
+            .row
+                div#box1.triple-box
+                    i.far.fa-list-alt
+                    br
+                    |                     
+                    #howTo
+                        | Add items to list
                         br
+                        | to be purchased
                         |                     
-                        #howTo
-                            | Add items to list
-                            br
-                            | to be purchased
-                            |                     
-                        .col-2
-                    |
+                    .col-2
+                |
 
-                    div#box2.triple-box
-                        i.fas.fa-check-double
+                div#box2.triple-box
+                    i.fas.fa-check-double
+                    br
+                    |                     
+                    #howTo
+                        | Check off the items purchased
                         br
+                        | and add to your &quot;in-kitchen&quot; list
                         |                     
-                        #howTo
-                            | Check off the items purchased
-                            br
-                            | and add to your &quot;in-kitchen&quot; list
-                            |                     
-                        .col-2
-                    |                 
-                    div#box3.triple-box
-                        .col-2
-                        |                     
-                        i.fas.fa-comments-dollar
-                        |                     
-                        #howTo
-                            | Re-adding an item from your
-                            br
-                            | &quot;in-kitchen&quot; list will notify user 
-                            br
-                            | they already
-                            |                         have it at home
-                br
-                br
-                br
-
-        .bg-image-color1
-            .container
-                .row
-                #tagline4
-                    i.fas.fa-grip-lines
-                    |  FAST &amp; EFFICIENT 
-                    i.fas.fa-grip-lines
-
-        .bg-image.aisle4
-            .container
-                .row
-                #infoLists
-                    | Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    | Placeholder
-                    br
-                    |  Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    |                     Placeholder
-                    br
-                    |  Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |                     Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder
-                    |                     Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                    |  Placeholder Placeholder Placeholder
-                    |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
-                    br
-                br
-                br
-                br
-
-        .bg-image-color2
-            .container
-                .row
-                #tagline5
-                    | simplify with shopify
-
-        .bg-white
-          .container
-            .row 
-            #reviews
-            | RATES AND REVIEWS
+                    .col-2
+                |                 
+                div#box3.triple-box
+                    .col-2
+                    |                     
+                    i.fas.fa-comments-dollar
+                    |                     
+                    #howTo
+                        | Re-adding an item from your
+                        br
+                        | &quot;in-kitchen&quot; list will notify user 
+                        br
+                        | they already
+                        |                         have it at home
+            br
             br
             br
 
-            .row 
-              .lg-col-6
-               #tagline2
+    .bg-image-color1
+        .container
+            .row
+            #tagline4
+                i.fas.fa-grip-lines
+                |  FAST &amp; EFFICIENT 
+                i.fas.fa-grip-lines
+
+    .bg-image.aisle4
+        .container
+            .row
+            #infoLists
+                | Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                | Placeholder
+                br
+                |  Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                |                     Placeholder Placeholder
+                br
+                |  Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                |                     Placeholder
+                br
+                |  Placeholder Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |  Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |                     Placeholder Placeholder Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |  Placeholder Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |  Placeholder
+                |                     Placeholder Placeholder Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+                |  Placeholder Placeholder Placeholder
+                |                     Placeholder Placeholder Placeholder Placeholder Placeholder Placeholder
+                br
+            br
+            br
+            br
+
+    .bg-image-color2
+        .container
+            .row
+            #tagline5
+                | simplify with shopify
+
+    .bg-white
+        .container
+        .row 
+        #reviews
+        | RATES AND REVIEWS
+        br
+        br
+
+        .row 
+            .lg-col-6
+            #tagline2
+            i.fas.fa-quote-left
+            | &nbspVery simple to use. I have an easier time finding things
+            br
+            | while shopping and helps me prepare meals for my family&nbsp
+            i.fas.fa-quote-right
+            br
+            #member - Ronessa, a member since 5/19
+            img(src='/assets/images/ronessa.png')
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            br
+            br
+            hr
+
+            .lg-col-6
+            #tagline6
                 i.fas.fa-quote-left
-                | &nbspVery simple to use. I have an easier time finding things
+                |   &nbspShopify is so convenient. 
+                |          No more aimless wandering 
                 br
-                | while shopping and helps me prepare meals for my family&nbsp
+                |   around the grocery store aisles. 
+                |               I save money this way.&nbsp
                 i.fas.fa-quote-right
                 br
-                #member - Ronessa, a member since 5/19
-                img(src='/assets/images/ronessa.png')
+                #member - Aaron, a member since 1/19
+                img(src='/assets/images/aaron.png')
                 span.fa.fa-star.fa-xs
                 span.fa.fa-star.fa-xs
                 span.fa.fa-star.fa-xs
@@ -214,94 +229,73 @@ html
                 br
                 hr
 
-              .lg-col-6
-                #tagline6
-                  i.fas.fa-quote-left
-                  |   &nbspShopify is so convenient. 
-                  |          No more aimless wandering 
-                  br
-                  |   around the grocery store aisles. 
-                  |               I save money this way.&nbsp
-                  i.fas.fa-quote-right
-                  br
-                  #member - Aaron, a member since 1/19
-                  img(src='/assets/images/aaron.png')
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  br
-                  br
-                  hr
+            .row 
+            .lg-col-6
+            #tagline2
+            i.fas.fa-quote-left
+            | &nbspPretty simple to use and follow along with while shopping&nbsp
+            i.fas.fa-quote-right
+            br
+            #member - Bryan, a member since 8/19
+            img(src='/assets/images/bryan.png')
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span.fa.fa-star.fa-xs
+            span#star.fa.fa-star.fa-xs
 
-              .row 
-              .lg-col-6
-               #tagline2
+            .lg-col-6
+            #tagline6
                 i.fas.fa-quote-left
-                | &nbspPretty simple to use and follow along with while shopping&nbsp
+                |   &nbspI love this app!!!!! Great for organizing your list.&nbsp
                 i.fas.fa-quote-right
                 br
-                #member - Bryan, a member since 8/19
-                img(src='/assets/images/bryan.png')
+                #member - Caroline, a member since 3/19
+                img(src='/assets/images/caroline.png')
                 span.fa.fa-star.fa-xs
                 span.fa.fa-star.fa-xs
                 span.fa.fa-star.fa-xs
                 span.fa.fa-star.fa-xs
-                span#star.fa.fa-star.fa-xs
-
-              .lg-col-6
-                #tagline6
-                  i.fas.fa-quote-left
-                  |   &nbspI love this app!!!!! Great for organizing your list.&nbsp
-                  i.fas.fa-quote-right
-                  br
-                  #member - Caroline, a member since 3/19
-                  img(src='/assets/images/caroline.png')
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  span.fa.fa-star.fa-xs
-                  
-
-        .bg-image-color3
-            .container
-                #teamline
-                    | MEET THE CREATORS
-
-                div#image-holder.row
+                span.fa.fa-star.fa-xs
                 
-                    .col-4
-                        img#nathan(src='/assets/images/nathan.png', alt='nathan')
-                        .container
-                        h4 Nathan Hill 
-                        p2 Server-side + DB, Back-End Developer 
-                        
 
-                    .col-4
-                        img#casey(src='assets/images/casey.png', alt='casey')
-                        .container
-                        h4 Casey Carroll
-                        p2 Innovation, New Technology Developer
-                        
+    .bg-image-color3
+        .container
+            #teamline
+                | MEET THE CREATORS
 
-                    .col-4
-                        img#nicole(src='assets/images/nicole.png', alt='nicole')
-                        .container
-                        h4 Nicole LaSusa
-                        p2 Creative Design, Front-End Developer 
-                        br
-                        br
-                        br
-                        //- .fab.fa-facebook-f
-                        //- .fab.fa-linkedin-in
-                        //- .fab.fa-twitter
+            div#image-holder.row
+            
+                .col-4
+                    img#nathan(src='/assets/images/nathan.png', alt='nathan')
+                    .container
+                    h4 Nathan Hill 
+                    p2 Server-side + DB, Back-End Developer 
+                    
 
-        .footer-margin
-            .card-footer
-            img#footerLogo(src='assets/images/footerlogo.png', alt='footer')
-            br
-            | Copyright 2019 
-            br
-            | All Rights Reserved. Created by NCN. 
+                .col-4
+                    img#casey(src='assets/images/casey.png', alt='casey')
+                    .container
+                    h4 Casey Carroll
+                    p2 Innovation, New Technology Developer
+                    
+
+                .col-4
+                    img#nicole(src='assets/images/nicole.png', alt='nicole')
+                    .container
+                    h4 Nicole LaSusa
+                    p2 Creative Design, Front-End Developer 
+                    br
+                    br
+                    br
+                    //- .fab.fa-facebook-f
+                    //- .fab.fa-linkedin-in
+                    //- .fab.fa-twitter
+
+    .footer-margin
+        .card-footer
+        img#footerLogo(src='assets/images/footerlogo.png', alt='footer')
+        br
+        | Copyright 2019 
+        br
+        | All Rights Reserved. Created by NCN. 
