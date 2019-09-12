@@ -1,22 +1,6 @@
 include head
-
-block user
-    .jumbotron
-        #logo
-            img(src='/assets/images/logo7.png', alt='logo')
-        |         
-        .topnav
-            
-            a.active(href='/') Home
-            | &nbsp&nbsp&nbsp&nbsp
-            |             
-            a(href='/user') My Account
-            | &nbsp&nbsp&nbsp&nbsp
-            |                      
-            a(href='/user')
-            i.fas.fa-shopping-cart
-            | &nbsp&nbsp&nbsp&nbsp   
-        
+include jumbo   
+block user 
     .bg-image.list1
         .container 
             .row
@@ -38,7 +22,6 @@ block user
                         label Add to List:
                         form(class="create-form" action="/api/newitem" method="POST")
                             .form-group
-                                //- label Burger Name:
                                 input(type="text" name="item")
                                 br
                                 label Add Category
@@ -46,6 +29,15 @@ block user
                                 input(type="text" name="category")
                                 br
                                 button(type="submit") Add it
+                                
+                .lg-col-4
+                    .right 
+                        label Your Shopping List: 
+                        ul#userGroceries.grocery-list
+                            li.item Toilet Paper
+                            li.item Paper Plates
+                            li.item Trail Mix
+
                 .lg-col-4
                     .left
                         label Add to List:
@@ -62,10 +54,4 @@ block user
                             li.item Pretzels
                             li.item Seltzer 
     
-                .lg-col-4
-                    .right 
-                        label Your Shopping List: 
-                        ul#userGroceries.grocery-list
-                            li.item Toilet Paper
-                            li.item Paper Plates
-                            li.item Trail Mix
+                
