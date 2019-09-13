@@ -25,10 +25,6 @@ block user
                                 //- label Burger Name:
                                 input(type="text" name="name")
                                 br
-                                label Add Category
-                                br
-                                input(type="text" name="category")
-                                br
                                 button(type="submit") Add it
                 .lg-col-4
                     .left
@@ -36,24 +32,23 @@ block user
                         ul#allGroceries.grocery-list 
                             #{data}
                             for item, i in items
-                                //- li(class="item ui-sortable-handle" style="display: list-item;")=item.name 
-                                li.item=item.name
-                            //- li.item Milk
-                            //- li.item Coffee
-                            //- li.item Pasta
-                            //- li.item Rice
-                            //- li.item Hamburgers
-                            //- li.item Hot Dogs 
-                            //- li.item Toilet Paper
-                            //- li.item Apple Juice
-                            //- li.item Gatorade
-                            //- li.item Pretzels
-                            //- li.item Seltzer 
+                                li(class="item" data-id=item.id)=item.name
     
                 .lg-col-4
                     .right 
                         label Your Shopping List: 
                         ul#userGroceries.grocery-list
-                            li.item Toilet Paper
-                            li.item Paper Plates
-                            li.item Trail Mix
+                            #{data}
+                            for list, i in userList
+                                if list.onList
+                                    li(class="item" data-id=list.itemId)=list.item.name
+
+                .lg-col-4
+                    .right 
+                        label In Your Cart: 
+                        ul#groceryCart.grocery-list
+                            #{data}
+                            for list, i in userList
+                                if list.inCart
+                                    li(class="item" data-id=list.itemId)=list.item.name
+
