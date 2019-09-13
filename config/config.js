@@ -20,9 +20,11 @@ module.exports = {
   production: {
     username: "root",
     password: null,
-    database: "test_db",
+    database: "database_production",
     host: "127.0.0.1",
     dialect: "mysql",
-    operatorsAliases: false
+    operatorsAliases: false,
+    // eslint-disable-next-line camelcase
+    use_env_variable: "JAWSDB_URL"
   }
 };
