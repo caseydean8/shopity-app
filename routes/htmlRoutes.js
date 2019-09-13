@@ -4,7 +4,15 @@ const db = require("../models");
 module.exports = app => {
   // Load index page
   app.get("/", function(req, res) {
-    res.render("index");
+    let data = {};
+    if (req.user) {
+      console.log("User is defined");
+      data.authUser = true;
+    } else {
+      console.log("User is undefined");
+      data.authUser = false;
+    }
+    res.render("index", data);
   });
 
   // Load example page and pass in an example by id
