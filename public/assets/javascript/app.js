@@ -79,11 +79,6 @@ $(document).ready(function() {
   //// user page
   $(function() {
     $("#allGroceries, #userGroceries")
-      .sortable({
-        connectWith: "ul",
-        placeholder: "placeholder",
-        delay: 150
-      })
       .disableSelection()
       .dblclick(function(e) {
         var item = e.target;
