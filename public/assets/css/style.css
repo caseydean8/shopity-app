@@ -563,3 +563,25 @@ label {
     color: white; 
     font-family: 'Abel', sans-serif;
 }
+
+#messageError1 {
+    font-size: 22px; 
+    text-align: center;
+    color: white; 
+    font-family: 'Abel', sans-serif;
+    margin-top: 50px; 
+}
+
+#messageError2 {
+    font-size: 40px; 
+    text-align: center; 
+    color: white; 
+    font-family: 'Abel', sans-serif;
+    margin-top: 5px; 
+}
+
+.container2 {
+    background-color: rgb(39, 39, 39); 
+    padding: 100px; 
+    height: 380px; 
+}
