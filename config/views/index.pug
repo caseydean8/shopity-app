@@ -5,11 +5,9 @@ block index
             img#popup-close(src='assets/images/close.png')
             #popup-box-content 
             h1 Sign-in or Create Account
-            p 
-                | Stay up to date on the latest in the shopify app, plus receive exclusive coupons by
-                | subscribing to our newsletter. 
                 br
                 br
+                div(id='“signinMessage”')
             form#popup-form(action='https://email_list_service_api.com')
                 input(type='hidden' name='list' value='key_list_etc') 
                 input(type='text' id='username' placeholder='Email Address') 
@@ -20,6 +18,7 @@ block index
                 br
                 hr
                 br
+                div(id='“createMessage”')
                 input(type='hidden' name='list' value='key_list_etc')
                 input(type='text' id='first-name' placeholder='First Name') 
                 = ' '
