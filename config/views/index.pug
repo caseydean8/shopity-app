@@ -25,7 +25,7 @@ block index
                 = ' '
                 input(type='text' id='last-name' placeholder='Last Name') 
                 = ' '
-                input(type='text' id='username' placeholder='Email Address')
+                input(type='text' id='new-username' placeholder='Email Address')
                 = ' '
                 input(type='password' id='new-password' placeholder='Create Password')
                 br
@@ -62,9 +62,15 @@ block index
                     button(type='button' id='create') Create Account
                
             
-        
-include jumbo
-block content   
+            a.active(href='/') Home
+            | &nbsp&nbsp&nbsp&nbsp
+            |             
+            a(href='/user') My Account
+            | &nbsp&nbsp&nbsp&nbsp
+            |                      
+            a(href='/user')
+            i.fas.fa-shopping-cart
+            | &nbsp&nbsp&nbsp&nbsp   
         
     .bg-image.aisle2
         .container
@@ -170,38 +176,38 @@ block content
         .container
         .row 
         #reviews
-        | RATES AND REVIEWS
-        br
-        br
+           | Rates and Reviews
+           br
+           
 
         .row 
             .lg-col-6
             #tagline2
-            i.fas.fa-quote-left
-            | &nbspVery simple to use. I have an easier time finding things
-            br
-            | while shopping and helps me prepare meals for my family&nbsp
-            i.fas.fa-quote-right
-            br
-            #member - Ronessa, a member since 5/19
-            img(src='/assets/images/ronessa.png')
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            br
-            br
-            hr
+                i.fas.fa-quote-left
+                |  &nbspVery simple to use. I have an easier time finding things
+                br
+                |  while shopping and helps me prepare meals for my family&nbsp
+                i.fas.fa-quote-right
+                br
+                #member - Ronessa, a member since 5/19
+                img(src='/assets/images/ronessa.png')
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                br
+                br
+                hr
 
             .lg-col-6
             #tagline6
                 i.fas.fa-quote-left
-                |   &nbspShopify is so convenient. 
-                |          No more aimless wandering 
+                |  &nbspShopify is so convenient. 
+                |  No more aimless wandering 
                 br
-                |   around the grocery store aisles. 
-                |               I save money this way.&nbsp
+                |  around the grocery store aisles. 
+                |  I save money this way.&nbsp
                 i.fas.fa-quote-right
                 br
                 #member - Aaron, a member since 1/19
@@ -218,17 +224,17 @@ block content
             .row 
             .lg-col-6
             #tagline2
-            i.fas.fa-quote-left
-            | &nbspPretty simple to use and follow along with while shopping&nbsp
-            i.fas.fa-quote-right
-            br
-            #member - Bryan, a member since 8/19
-            img(src='/assets/images/bryan.png')
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span.fa.fa-star.fa-xs
-            span#star.fa.fa-star.fa-xs
+                i.fas.fa-quote-left
+                |   &nbspPretty simple to use and follow along with while shopping&nbsp
+                i.fas.fa-quote-right
+                br
+                #member - Bryan, a member since 8/19
+                img(src='/assets/images/bryan.png')
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span.fa.fa-star.fa-xs
+                span#star.fa.fa-star.fa-xs
 
             .lg-col-6
             #tagline6

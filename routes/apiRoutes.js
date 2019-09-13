@@ -69,6 +69,7 @@ module.exports = app => {
       newListItem.inCart = false;
       // eslint-disable-next-line no-unused-vars
       db.list.create(newListItem).then(response => {
+        // return the list item we just created.
         // redirect the user back to the /user route to redisplay the list with the new item added.
         res.redirect("/user");
       });
