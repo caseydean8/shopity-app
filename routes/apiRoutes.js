@@ -29,7 +29,6 @@ module.exports = app => {
 
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
-    console.log(req.body);
     // check to make sure the username is not a duplicate
     db.user
       .findOne({ where: { username: req.body.username } })
@@ -67,12 +66,8 @@ module.exports = app => {
       newListItem.itemID = newItem.id;
       newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
       newListItem.inCart = false;
-      // eslint-disable-next-line no-unused-vars
-      db.list.create(newListItem).then(response => {
-        // return the list item we just created.
-        // redirect the user back to the /user route to redisplay the list with the new item added.
-        res.redirect("/user");
-      });
+      // redirect the user back to the /user route to redisplay the items list with the new item added.
+      res.redirect("/user");
     });
   });
 
@@ -120,8 +115,12 @@ module.exports = app => {
       })
       .then(theItem => {
         if (theItem) {
-          // if the item exists, return it
-          res.json(theItem);
+          // if the item exists, update it and return it
+          db.list
+            .update(newItem, { where: { id: theItem.id } })
+            .then(updated => {
+              res.json(updated);
+            });
         } else {
           // if the item does not exist, create it.
           db.list.create(newItem).then(response => {
@@ -129,11 +128,5 @@ module.exports = app => {
           });
         }
       });
-  });
-
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
   });
 };
