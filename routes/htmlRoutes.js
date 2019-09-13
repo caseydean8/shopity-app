@@ -29,8 +29,8 @@ module.exports = app => {
         db.item.findAll({}).then(items => {
           data.items = items;
           // just rendering the page at the moment, will udate to include data once the pug file is complete.
-          res.render("user");
-          // res.render("user", data);
+          // res.render("user");
+          res.render("user", data);
           // res.json(data);
         });
       })

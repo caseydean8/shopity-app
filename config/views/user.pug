@@ -3,9 +3,9 @@ include jumbo
 block user 
     .bg-image.list1
         .container 
+            #{data}
             .row
-            #welcome Welcome Back, 
-            #user 
+            #welcome Welcome Back, #{user.firstName}
         p
             | *Drag &amp; drop to rearrange items within grocery lists or between lists.
             br
@@ -23,7 +23,7 @@ block user
                         form(class="create-form" action="/api/newitem" method="POST")
                             .form-group
                                 //- label Burger Name:
-                                input(type="text" name="item")
+                                input(type="text" name="name")
                                 br
                                 label Add Category
                                 br
@@ -33,18 +33,22 @@ block user
                 .lg-col-4
                     .left
                         label Add to List:
-                        ul#allGroceries.grocery-list
-                            li.item Milk
-                            li.item Coffee
-                            li.item Pasta
-                            li.item Rice
-                            li.item Hamburgers
-                            li.item Hot Dogs 
-                            li.item Toilet Paper
-                            li.item Apple Juice
-                            li.item Gatorade
-                            li.item Pretzels
-                            li.item Seltzer 
+                        ul#allGroceries.grocery-list 
+                            #{data}
+                            for item, i in items
+                                //- li(class="item ui-sortable-handle" style="display: list-item;")=item.name 
+                                li.item=item.name
+                            //- li.item Milk
+                            //- li.item Coffee
+                            //- li.item Pasta
+                            //- li.item Rice
+                            //- li.item Hamburgers
+                            //- li.item Hot Dogs 
+                            //- li.item Toilet Paper
+                            //- li.item Apple Juice
+                            //- li.item Gatorade
+                            //- li.item Pretzels
+                            //- li.item Seltzer 
     
                 .lg-col-4
                     .right 
