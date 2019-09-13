@@ -1,35 +1,38 @@
 include head
 include jumbo
 block index
-    #list-builder
-        #popup-box 
-            img#popup-close(src='assets/images/close.png')
-            #popup-box-content 
-            h1 Sign-in or Create Account
-                br
-                br
-                div(id='“signinMessage”')
-            form#popup-form(action='https://email_list_service_api.com')
-                input(type='hidden' name='list' value='key_list_etc') 
-                input(type='text' id='username' placeholder='Email Address') 
-                = ' '
-                input(type='password' id='password' placeholder='Password')
-                br
-                button(type='button' id='signin') Sign in
-                br
-                hr
-                br
-                div(id='“createMessage”')
-                input(type='hidden' name='list' value='key_list_etc')
-                input(type='text' id='first-name' placeholder='First Name') 
-                = ' '
-                input(type='text' id='last-name' placeholder='Last Name') 
-                = ' '
-                input(type='text' id='new-username' placeholder='Email Address')
-                = ' '
-                input(type='password' id='new-password' placeholder='Create Password')
-                br
-                button(type='button' id='create') Create Account              
+    #{data}
+    if !authUser
+        #list-builder
+            #popup-box 
+                img#popup-close(src='assets/images/close.png')
+                #popup-box-content 
+                h1 Sign-in or Create Account
+                    br
+                    br
+                    div(id='“signinMessage”')
+                    
+                form#popup-form(action='https://email_list_service_api.com')
+                    input(type='hidden' name='list' value='key_list_etc') 
+                    input(type='text' id='username' placeholder='Email Address') 
+                    = ' '
+                    input(type='password' id='password' placeholder='Password')
+                    br
+                    button(type='button' id='signin') Sign in
+                    br
+                    hr
+                    br
+                    div(id='“createMessage”')
+                    input(type='hidden' name='list' value='key_list_etc')
+                    input(type='text' id='first-name' placeholder='First Name') 
+                    = ' '
+                    input(type='text' id='last-name' placeholder='Last Name') 
+                    = ' '
+                    input(type='text' id='new-username' placeholder='Email Address')
+                    = ' '
+                    input(type='password' id='new-password' placeholder='Create Password')
+                    br
+                    button(type='button' id='create') Create Account              
         
     .bg-image.aisle2
         .container
