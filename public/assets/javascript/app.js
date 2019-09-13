@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 $(document).ready(function() {
   var delay = 300; // milliseconds
   var cookieExpire = 0; // days
@@ -78,94 +79,112 @@ $(document).ready(function() {
 
   //// user page
   $(function() {
-    $("#allGroceries, #userGroceries")
+    $("#allGroceries, #userGroceries, #groceryCart")
       .disableSelection()
       .dblclick(function(e) {
         var item = e.target;
         if (e.currentTarget.id === "allGroceries") {
           //move from all to user
-          $(item).fadeOut("fast", function() {
-            console.log("move to user list");
-            $(item)
-              .appendTo($("#userGroceries"))
-              .fadeIn("slow");
+          let changedItem = {};
+          changedItem.itemId = $(item).attr("data-id");
+          changedItem.onList = true;
+          changedItem.inCart = false;
+          console.log(`move ${changedItem.itemId} to user list`);
+          $.post("/api/update", changedItem).then(response => {
+            if (response) {
+              window.location = "/user";
+            }
           });
-        } else {
+        } else if (e.currentTarget.id === "userGroceries") {
           //move from user to all
-          $(item).fadeOut("fast", function() {
-            console.log("take off of user list.");
-            $(item)
-              .appendTo($("#allGroceries"))
-              .fadeIn("slow");
+          let changedItem = {};
+          changedItem.itemId = $(item).attr("data-id");
+          changedItem.onList = false;
+          changedItem.inCart = true;
+          console.log(changedItem);
+          $.post("/api/update", changedItem).then(response => {
+            if (response) {
+              window.location = "/user";
+            }
+          });
+        } else if (e.currentTarget.id === "groceryCart") {
+          //move from user to all
+          let changedItem = {};
+          changedItem.itemId = $(item).attr("data-id");
+          changedItem.onList = false;
+          changedItem.inCart = false;
+          console.log(changedItem);
+          $.post("/api/update", changedItem).then(response => {
+            if (response) {
+              window.location = "/user";
+            }
           });
         }
       });
   });
 
-// contact page 
+  // contact page
 
   linePage();
   cycleText();
-  
-  function linePage(){
-  
-    var splitMe = $('.sentence');
-  
-    splitMe.each(function(index){
-  
+
+  function linePage() {
+    var splitMe = $(".sentence");
+
+    // eslint-disable-next-line no-unused-vars
+    splitMe.each(function(index) {
       var text = $(this).html();
-      var output = '';
-  
+      var output = "";
+
       //split all letters into spans
       for (var i = 0, len = text.length; i < len; i++) {
-        
-          output += '<span data-index="'+i+'">' + text[i] + '</span>';
-        
+        // eslint-disable-next-line prettier/prettier
+        output += "<span data-index=\"" + i + "\">" + text[i] + "</span>";
       }
-  
+
       //put it in the html
       $(this).html(output);
-  
+
       //check the offset of each letter to figure out where the line breaks
       var prev = 0;
       var parts = [];
-      $(this).find('span').each(function(i){
-        if ($(this).offset().top > prev){
-          parts.push(i);
-          prev = $(this).offset().top;
-        }
-      })
-  
+      $(this)
+        .find("span")
+        .each(function(i) {
+          if ($(this).offset().top > prev) {
+            parts.push(i);
+            prev = $(this).offset().top;
+          }
+        });
+
       parts.push(text.length);
-  
-      //create final 
-      var finalOutput = ''
-  
-      parts.forEach(function(endPoint, i){
-        if (endPoint > 0){
-          finalOutput += '<span data-line="'+i+'" class="line-wrap"><span class="line-inner">' + text.substring(parts[i-1],parts[i]) + '</span></span>';
+
+      //create final
+      var finalOutput = "";
+
+      parts.forEach(function(endPoint, i) {
+        if (endPoint > 0) {
+          finalOutput +=
+            '<span data-line="' +
+            i +
+            '" class="line-wrap"><span class="line-inner">' +
+            text.substring(parts[i - 1], parts[i]) +
+            "</span></span>";
         }
-      })
-  
+      });
+
       $(this).html(finalOutput);
       $(this).addClass("lined");
-  
-    })
-  
+    });
   }
-  
-  function cycleText(){
-  
-    setInterval(function(){
-  
-      $('.sentence').toggleClass('sentence--show');
-  
-    }, 4000)
-  
-    setTimeout(function(){
-      $('.sentence').toggleClass('sentence--show'); 
-    },1000)
-    
+
+  function cycleText() {
+    setInterval(function() {
+      $(".sentence").toggleClass("sentence--show");
+    }, 4000);
+
+    setTimeout(function() {
+      $(".sentence").toggleClass("sentence--show");
+    }, 1000);
   }
-  });
-  
+});
