@@ -115,7 +115,7 @@ a {
     width: 260px;
     height: 200px;
     background: white;
-    opacity: 0.78;
+    opacity: 0.85;
     border-radius: 10%;
     margin: 0 auto;
     margin-top: 1rem;
@@ -519,8 +519,8 @@ label {
 {
     display: none;
     float: left;
-    margin-top: 170px; 
-    margin-bottom: 120px; 
+    margin-top: 90px; 
+    margin-bottom: 90px; 
     height: 100%;
     min-height: 1px;
 }
@@ -559,6 +559,7 @@ label {
 }
 
 #partners {
-    font-size: 30px; 
+    font-size: 35px; 
     color: white; 
+    font-family: 'Abel', sans-serif;
 }

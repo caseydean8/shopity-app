@@ -194,9 +194,9 @@ $(document).ready(function() {
 $(document).ready(function(){
   $('.customer-logos').slick({
       slidesToShow: 6,
-      slidesToScroll: 1,
+      slidesToScroll: 2,
       autoplay: true,
-      autoplaySpeed: 700,
+      autoplaySpeed: 900,
       arrows: false,
       dots: false,
       pauseOnHover: false,
