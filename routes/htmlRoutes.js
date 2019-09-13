@@ -60,6 +60,6 @@ module.exports = app => {
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
-    res.send("404");
+    res.render("404");
   });
 };
