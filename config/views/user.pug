@@ -13,15 +13,18 @@ block user
 
     .bg-image-color4 
         br
+        br
+        br
         .container
             .row
                 .lg-col-4
                     .grocery-add
-                        label Add to List:
+                        label Add Item:
                         form(class="create-form" action="/api/newitem" method="POST")
                             .form-group
                                 //- label Burger Name:
                                 input(type="text" name="name")
+                                br
                                 br
                                 button(type="submit") Add it
                 .lg-col-4
