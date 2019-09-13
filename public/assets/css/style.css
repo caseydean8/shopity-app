@@ -285,7 +285,7 @@ button {
 .bg-image-color4 {
     background-color: black;
     opacity: 0.85;
-    height: 900px; 
+    height: 550px; 
 }
 
 #teamline {
@@ -331,7 +331,7 @@ p2 {
     font-size: 60px; 
     font-family: 'Abel', sans-serif;
     margin-top: 30px; 
-    margin-left: 80px; 
+    margin-left: 120px; 
 }
 
 label {
@@ -346,18 +346,20 @@ label {
   }
   .right {
     float: right;
+    margin-left: 50px;
   }
   .left {
     float: left;
+    margin-left: 50px; 
   }
 
   p {
     clear: both;
     padding-top: 1em;
     color: white; 
-    font-size: 16px; 
+    font-size: 19px; 
     font-family: 'Abel', sans-serif;
-    margin-left: 190px;  
+    margin-left: 120px;  
   }
 
   .grocery-list {
