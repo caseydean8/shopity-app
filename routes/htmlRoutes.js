@@ -42,10 +42,6 @@ module.exports = app => {
     res.render("user");
   });
 
-  app.get("/404", (req, res) => {
-    res.render("404");
-  });
-
   app.get("/contact", (req, res) => {
     res.render("contact");
   });
@@ -56,6 +52,6 @@ module.exports = app => {
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {
-    res.send("404");
+    res.render("404");
   });
 };
