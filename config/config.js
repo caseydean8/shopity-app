@@ -2,29 +2,29 @@ require("dotenv").config();
 
 module.exports = {
   development: {
-    username: "root",
-    password: process.env.DB_PASSWORD,
-    database: "shopping_list_db",
-    host: "127.0.0.1",
+    username: "fnhxlygp36haoa6c",
+    password: process.env.JAWSDB_PASSWORD,
+    database: "m1813t8yzk3cpl2u",
+    host: "dcrhg4kh56j13bnu.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     dialect: "mysql"
-    // operatorsAliases: false
+    // operatorsaliases: false
   },
   test: {
-    username: "root",
-    password: process.env.DB_PASSWORD,
-    database: "shopping_list_db",
-    host: "127.0.0.1",
+    username: "fnhxlygp36haoa6c",
+    password: process.env.JAWSDB_PASSWORD,
+    database: "m1813t8yzk3cpl2u",
+    host: "dcrhg4kh56j13bnu.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     dialect: "mysql"
     // operatorsAliases: false
   },
   production: {
-    username: "root",
-    password: null,
-    database: "database_production",
-    host: "127.0.0.1",
+    username: "fnhxlygp36haoa6c",
+    password: process.env.JAWSDB_PASSWORD,
+    database: "m1813t8yzk3cpl2u",
+    host: "dcrhg4kh56j13bnu.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     dialect: "mysql",
     // operatorsAliases: false,
     // eslint-disable-next-line camelcase
-    use_env_variable: "JAWSDB_URL"
+    use_env_variable: "JAWSDB_MARIA_URL"
   }
 };
