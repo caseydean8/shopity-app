@@ -6,16 +6,16 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: "shopping_list_db",
     host: "127.0.0.1",
-    dialect: "mysql",
-    operatorsAliases: false
+    dialect: "mysql"
+    // operatorsAliases: false
   },
   test: {
     username: "root",
     password: process.env.DB_PASSWORD,
     database: "shopping_list_db",
     host: "127.0.0.1",
-    dialect: "mysql",
-    operatorsAliases: false
+    dialect: "mysql"
+    // operatorsAliases: false
   },
   production: {
     username: "root",
@@ -23,7 +23,7 @@ module.exports = {
     database: "database_production",
     host: "127.0.0.1",
     dialect: "mysql",
-    operatorsAliases: false,
+    // operatorsAliases: false,
     // eslint-disable-next-line camelcase
     use_env_variable: "JAWSDB_URL"
   }
