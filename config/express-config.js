@@ -1,13 +1,25 @@
 // SET EXPRESS ENVIRONMENT
 const express = require("express");
+// const cors = require("cors");
 const app = express();
 const path = require("path");
 const logger = require("./winston.js");
 const passport = require("./passport.js");
 const session = require("express-session");
 
+// app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// fix CORS issue
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000/"); // update to match the domain you will make the request from
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 // SERVE UP STATIC FILES
 app.use(express.static("public"));
