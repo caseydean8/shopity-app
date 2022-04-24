@@ -1,10 +1,11 @@
 /* added css to handle .disableSelection() deprecation in jQuery */
 * {
-    -ms-user-select: none; /* IE 10+ */
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
+    /* -ms-user-select: none;  */
+    /* IE 10+ */
+    /* -moz-user-select: -moz-none; */
+    /* -khtml-user-select: none; */
+    /* -webkit-user-select: none; */
+    /* user-select: none; */
  }
  
  .lg-col-4 {
@@ -240,16 +241,17 @@ a {
 #popup-box {
     font-family: 'Abel', sans-serif;
     position: fixed;
+    text-align: center;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     color: black;
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-    border: 10px solid lightgray;
-    border-radius: 10px;
+    width: 98vw;
+    max-width: 23.5rem;
+    padding: 0.625rem;
+    border: 0.3125rem solid lightgray;
+    border-radius: 0.3125rem;
     display: none;
 }
 
@@ -270,26 +272,26 @@ a {
 }
 
 #popup-box input {
-    padding: 10px;
-    border: 1px solid #333;
+    padding: 0.625rem;
+    border: 0.0625rem solid #333;
     width: 80%;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     display: block;
 }
 
 #popup-box button {
-    padding: 10px;
-    border: 1px solid lightgray;
+    padding: 0.625rem;
+    border: 0.0625rem solid lightgray;
     cursor: pointer;
 }
 
 button {
-    width: 150px;
-    border-radius: 10px;
+    width: 9.375rem;
+    border-radius: 0.625rem;
     background-color: #2989F7;
-    font-size: 20px;
-    margin: 0 auto;
+    font-size: 1.25rem;
+    margin: 0.625rem auto;
     display: block;
     color: white;
 }

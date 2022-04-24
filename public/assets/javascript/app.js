@@ -25,23 +25,24 @@ $(document).ready(function() {
   // NEW 9.9.2019
 
   //click to get to home page
-  $("#home").on("click", function () {
+  $("#home").on("click", function() {
     window.location = "/";
   });
 
   // click to get to user page
-  $("#myAccount").on("click", function () {
+  $("#myAccount").on("click", function() {
     window.location = "/user";
   });
 
   // click to get to user page
-  $("#signin").on("click", function () {
+  $("#signin").on("click touchstart", function() {
     let user = {};
     user.username = $("#username").val();
     user.password = $("#password").val();
     $.post("/login", user).then(response => {
       if (response.status === "success") {
         window.location = "/user";
+        console.log(window.location);
       } else {
         console.log(response);
         // display the response.message in the appropriate div to show the user why the login didnt work
@@ -130,7 +131,7 @@ $(document).ready(function() {
     var splitMe = $(".sentence");
 
     // eslint-disable-next-line no-unused-vars
-    splitMe.each(function (index) {
+    splitMe.each(function(index) {
       var text = $(this).html();
       var output = "";
 
@@ -160,7 +161,7 @@ $(document).ready(function() {
       //create final
       var finalOutput = "";
 
-      parts.forEach(function (endPoint, i) {
+      parts.forEach(function(endPoint, i) {
         if (endPoint > 0) {
           finalOutput +=
             '<span data-line="' +
