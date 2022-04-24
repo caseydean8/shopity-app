@@ -25,17 +25,17 @@ $(document).ready(function() {
   // NEW 9.9.2019
 
   //click to get to home page
-  $("#home").on("click", function() {
+  $("#home").on("click", function () {
     window.location = "/";
   });
 
   // click to get to user page
-  $("#myAccount").on("click", function() {
+  $("#myAccount").on("click", function () {
     window.location = "/user";
   });
 
   // click to get to user page
-  $("#signin").on("click", function() {
+  $("#signin").on("click", function () {
     let user = {};
     user.username = $("#username").val();
     user.password = $("#password").val();
@@ -79,48 +79,46 @@ $(document).ready(function() {
 
   //// user page
   $(function() {
-    $("#allGroceries, #userGroceries, #groceryCart")
-      .disableSelection()
-      .dblclick(function(e) {
-        var item = e.target;
-        if (e.currentTarget.id === "allGroceries") {
-          //move from all to user
-          let changedItem = {};
-          changedItem.itemId = $(item).attr("data-id");
-          changedItem.onList = true;
-          changedItem.inCart = false;
-          console.log(`move ${changedItem.itemId} to user list`);
-          $.post("/api/update", changedItem).then(response => {
-            if (response) {
-              window.location = "/user";
-            }
-          });
-        } else if (e.currentTarget.id === "userGroceries") {
-          //move from user to all
-          let changedItem = {};
-          changedItem.itemId = $(item).attr("data-id");
-          changedItem.onList = false;
-          changedItem.inCart = true;
-          console.log(changedItem);
-          $.post("/api/update", changedItem).then(response => {
-            if (response) {
-              window.location = "/user";
-            }
-          });
-        } else if (e.currentTarget.id === "groceryCart") {
-          //move from user to all
-          let changedItem = {};
-          changedItem.itemId = $(item).attr("data-id");
-          changedItem.onList = false;
-          changedItem.inCart = false;
-          console.log(changedItem);
-          $.post("/api/update", changedItem).then(response => {
-            if (response) {
-              window.location = "/user";
-            }
-          });
-        }
-      });
+    $("#allGroceries, #userGroceries, #groceryCart").dblclick(function(e) {
+      var item = e.target;
+      if (e.currentTarget.id === "allGroceries") {
+        //move from all to user
+        let changedItem = {};
+        changedItem.itemId = $(item).attr("data-id");
+        changedItem.onList = true;
+        changedItem.inCart = false;
+        console.log(`move ${changedItem.itemId} to user list`);
+        $.post("/api/update", changedItem).then(response => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      } else if (e.currentTarget.id === "userGroceries") {
+        //move from user to all
+        let changedItem = {};
+        changedItem.itemId = $(item).attr("data-id");
+        changedItem.onList = false;
+        changedItem.inCart = true;
+        console.log(changedItem);
+        $.post("/api/update", changedItem).then(response => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      } else if (e.currentTarget.id === "groceryCart") {
+        //move from user to all
+        let changedItem = {};
+        changedItem.itemId = $(item).attr("data-id");
+        changedItem.onList = false;
+        changedItem.inCart = false;
+        console.log(changedItem);
+        $.post("/api/update", changedItem).then(response => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      }
+    });
   });
 
   // contact page
@@ -132,14 +130,14 @@ $(document).ready(function() {
     var splitMe = $(".sentence");
 
     // eslint-disable-next-line no-unused-vars
-    splitMe.each(function(index) {
+    splitMe.each(function (index) {
       var text = $(this).html();
       var output = "";
 
       //split all letters into spans
       for (var i = 0, len = text.length; i < len; i++) {
         // eslint-disable-next-line prettier/prettier
-        output += "<span data-index=\"" + i + "\">" + text[i] + "</span>";
+        output += '<span data-index="' + i + '">' + text[i] + "</span>";
       }
 
       //put it in the html
@@ -162,7 +160,7 @@ $(document).ready(function() {
       //create final
       var finalOutput = "";
 
-      parts.forEach(function(endPoint, i) {
+      parts.forEach(function (endPoint, i) {
         if (endPoint > 0) {
           finalOutput +=
             '<span data-line="' +
