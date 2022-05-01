@@ -32,7 +32,7 @@
         ],
         "quotes": [
             "error",
-            "double"
+            // "double"
         ],
         "prettier/prettier": "error"
     }
