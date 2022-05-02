@@ -1,9 +1,9 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 
-module.exports = app => {
+module.exports = (app) => {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     let data = {};
     if (req.user) {
       console.log("User is defined");
@@ -16,33 +16,41 @@ module.exports = app => {
   });
 
   // Load example page and pass in an example by id
+  // loads user and list and items
   app.get("/user", isAuthenticated, (req, res) => {
     let data = {};
     data.user = {};
     data.user.firstName = req.user.firstName;
     data.user.lastName = req.user.lastName;
     data.user.username = req.user.username;
+    data.user.id = req.user.id;
+    // console.log(data);
 
     db.list
       .findAll({
         where: {
-          userId: req.user.id
+          userId: req.user.id,
         },
-        include: [db.item]
+        include: [db.item],
       })
-      .then(userList => {
+      .then((userList) => {
         data.userList = userList;
-        db.item.findAll({}).then(items => {
+        db.item.findAll({}).then((items) => {
           data.items = items;
           // just rendering the page at the moment, will udate to include data once the pug file is complete.
           // res.render("user");
+          // console.log(`in html routes page`);
+          // str = JSON.stringify(data, null, 4);
+          // // (Optional) beautiful indented output.
+          // console.log(str);
+
           res.render("user", data);
           // res.json(data);
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-        res.redirect("/");
+        // res.redirect("/");
       });
   });
 

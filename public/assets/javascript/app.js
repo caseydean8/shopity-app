@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-$(document).ready(function() {
+$(document).ready(function () {
   var delay = 300; // milliseconds
   var cookieExpire = 0; // days
 
@@ -25,24 +25,23 @@ $(document).ready(function() {
   // NEW 9.9.2019
 
   //click to get to home page
-  $("#home").on("click", function() {
+  $("#home").on("click", function () {
     window.location = "/";
   });
 
   // click to get to user page
-  $("#myAccount").on("click", function() {
+  $("#myAccount").on("click", function () {
     window.location = "/user";
   });
 
   // click to get to user page
-  $("#signin").on("click touchstart", function() {
+  $("#signin").on("click touchstart", function () {
     let user = {};
     user.username = $("#username").val();
     user.password = $("#password").val();
-    $.post("/login", user).then(response => {
+    $.post("/login", user).then((response) => {
       if (response.status === "success") {
         window.location = "/user";
-        console.log(window.location);
       } else {
         console.log(response);
         // display the response.message in the appropriate div to show the user why the login didnt work
@@ -56,12 +55,12 @@ $(document).ready(function() {
     newUser.lastName = $("#last-name").val();
     newUser.username = $("#new-username").val();
     newUser.password = $("#new-password").val();
-    $.post("/api/adduser", newUser).then(response => {
+    $.post("/api/adduser", newUser).then((response) => {
       // if we had success creating the new user and the user object is returned to us
       if (response.firstName === newUser.firstName) {
         // redirect the user to the login route
         console.log("Calling post route to /login");
-        $.post("/login", newUser).then(response => {
+        $.post("/login", newUser).then((response) => {
           console.log("inside post route");
           if (response.status === "success") {
             window.location = "/user";
@@ -79,8 +78,9 @@ $(document).ready(function() {
   });
 
   //// user page
-  $(function() {
-    $("#allGroceries, #userGroceries, #groceryCart").dblclick(function(e) {
+  // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]
+  $(function () {
+    $("#allGroceries, #userGroceries, #groceryCart").dblclick(function (e) {
       var item = e.target;
       if (e.currentTarget.id === "allGroceries") {
         //move from all to user
@@ -89,9 +89,10 @@ $(document).ready(function() {
         changedItem.onList = true;
         changedItem.inCart = false;
         console.log(`move ${changedItem.itemId} to user list`);
-        $.post("/api/update", changedItem).then(response => {
+        $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
+            console.log(`in button click allGroceries`)
           }
         });
       } else if (e.currentTarget.id === "userGroceries") {
@@ -101,9 +102,10 @@ $(document).ready(function() {
         changedItem.onList = false;
         changedItem.inCart = true;
         console.log(changedItem);
-        $.post("/api/update", changedItem).then(response => {
+        $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
+            console.log(`in button click in userGroceries`)
           }
         });
       } else if (e.currentTarget.id === "groceryCart") {
@@ -113,12 +115,14 @@ $(document).ready(function() {
         changedItem.onList = false;
         changedItem.inCart = false;
         console.log(changedItem);
-        $.post("/api/update", changedItem).then(response => {
+        $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
+            console.log(`in button click in grocery cart`)
           }
         });
       }
+      
     });
   });
 
@@ -131,7 +135,7 @@ $(document).ready(function() {
     var splitMe = $(".sentence");
 
     // eslint-disable-next-line no-unused-vars
-    splitMe.each(function(index) {
+    splitMe.each(function (index) {
       var text = $(this).html();
       var output = "";
 
@@ -149,7 +153,7 @@ $(document).ready(function() {
       var parts = [];
       $(this)
         .find("span")
-        .each(function(i) {
+        .each(function (i) {
           if ($(this).offset().top > prev) {
             parts.push(i);
             prev = $(this).offset().top;
@@ -161,7 +165,7 @@ $(document).ready(function() {
       //create final
       var finalOutput = "";
 
-      parts.forEach(function(endPoint, i) {
+      parts.forEach(function (endPoint, i) {
         if (endPoint > 0) {
           finalOutput +=
             '<span data-line="' +
@@ -178,11 +182,11 @@ $(document).ready(function() {
   }
 
   function cycleText() {
-    setInterval(function() {
+    setInterval(function () {
       $(".sentence").toggleClass("sentence--show");
     }, 4000);
 
-    setTimeout(function() {
+    setTimeout(function () {
       $(".sentence").toggleClass("sentence--show");
     }, 1000);
   }
@@ -190,7 +194,7 @@ $(document).ready(function() {
 
 // slide logos
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".customer-logos").slick({
     slidesToShow: 6,
     slidesToScroll: 2,
@@ -203,16 +207,16 @@ $(document).ready(function() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 4
-        }
+          slidesToShow: 4,
+        },
       },
       {
         breakpoint: 520,
         settings: {
-          slidesToShow: 3
-        }
-      }
-    ]
+          slidesToShow: 3,
+        },
+      },
+    ],
   });
 });
 

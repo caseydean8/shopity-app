@@ -1,10 +1,11 @@
 const passport = require("../config/passport.js");
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const user = require("../models/user.js");
 
-module.exports = app => {
+module.exports = (app) => {
+  // this route finds all list items for the authenticated user, and returns them as a JSON object
   app.get("/api/userlist", isAuthenticated, (req, res) => {
-    // this route finds all list items for the authenticated user, and returns them as a JSON object
     let data = {};
     data.user = {};
     data.user.firstName = req.user.firstName;
@@ -14,13 +15,13 @@ module.exports = app => {
     db.list
       .findAll({
         where: {
-          userId: req.user.id
+          userId: req.user.id,
         },
-        include: [db.item]
+        include: [db.item],
       })
-      .then(userList => {
+      .then((userList) => {
         data.userList = userList;
-        db.item.findAll({}).then(items => {
+        db.item.findAll({}).then((items) => {
           data.items = items;
           res.json(data);
         });
@@ -32,7 +33,7 @@ module.exports = app => {
     // check to make sure the username is not a duplicate
     db.user
       .findOne({ where: { username: req.body.username } })
-      .then(response => {
+      .then((response) => {
         console.log(req.body.username);
         console.log("Response is below:");
         console.log(response);
@@ -46,7 +47,7 @@ module.exports = app => {
               // redirect the new user to the login route
               res.json(req.body);
             })
-            .catch(err => {
+            .catch((err) => {
               // if there is an error, return the error
               res.json(err);
             });
@@ -56,31 +57,35 @@ module.exports = app => {
 
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
-    console.log(req.body);
+    console.log(`in /api/newitem post route`);
+    str = JSON.stringify(req.body, null, 4);
+    console.log(str);
     // use the req.body object to create a new entry in the items table
-    db.item.create(req.body).then(newItem => {
-      // after that item is created, add it to the list table for the user
-      let newListItem = {};
-      // pull together an obect to send to ther database that mirrors the lists db
-      newListItem.userId = req.user.id;
-      newListItem.itemID = newItem.id;
-      newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
-      newListItem.inCart = false;
-      // redirect the user back to the /user route to redisplay the items list with the new item added.
-      res.redirect("/user");
-    });
+    db.item
+      .create({ name: req.body.name, category: -1, userId: req.user.id })
+      .then((newItem) => {
+        // after that item is created, add it to the list table for the user
+        let newListItem = {};
+        // pull together an obect to send to ther database that mirrors the lists db
+        newListItem.userId = req.user.id;
+        newListItem.itemID = newItem.id;
+        newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
+        newListItem.inCart = false;
+        // redirect the user back to the /user route to redisplay the items list with the new item added.
+        res.redirect("/user");
+      });
   });
 
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
-  app.post("/login", function(req, res, next) {
-    passport.authenticate("local", function(err, user, info) {
+  app.post("/login", function (req, res, next) {
+    passport.authenticate("local", function (err, user, info) {
       if (err) {
         return next(err);
       }
       if (!user) {
         return res.json(info);
       }
-      req.logIn(user, function(err) {
+      req.logIn(user, function (err) {
         if (err) {
           return next(err);
         }
@@ -110,20 +115,20 @@ module.exports = app => {
       .findOne({
         where: {
           userId: newItem.userId,
-          itemId: newItem.itemId
-        }
+          itemId: newItem.itemId,
+        },
       })
-      .then(theItem => {
+      .then((theItem) => {
         if (theItem) {
           // if the item exists, update it and return it
           db.list
             .update(newItem, { where: { id: theItem.id } })
-            .then(updated => {
+            .then((updated) => {
               res.json(updated);
             });
         } else {
           // if the item does not exist, create it.
-          db.list.create(newItem).then(response => {
+          db.list.create(newItem).then((response) => {
             res.json(response);
           });
         }

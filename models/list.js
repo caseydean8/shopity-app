@@ -23,11 +23,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    List.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // List.belongsTo(models.user, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
   };
 
   return List;
