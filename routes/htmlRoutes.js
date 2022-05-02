@@ -16,7 +16,7 @@ module.exports = (app) => {
   });
 
   // Load example page and pass in an example by id
-  // loads user and list and items
+  // loads user and list and items, sends data to pug file
   app.get("/user", isAuthenticated, (req, res) => {
     let data = {};
     data.user = {};
@@ -26,32 +26,48 @@ module.exports = (app) => {
     data.user.id = req.user.id;
     // console.log(data);
 
-    db.list
+    db.item
       .findAll({
         where: {
           userId: req.user.id,
         },
-        include: [db.item],
       })
-      .then((userList) => {
-        data.userList = userList;
-        db.item.findAll({}).then((items) => {
-          data.items = items;
-          // just rendering the page at the moment, will udate to include data once the pug file is complete.
-          // res.render("user");
-          // console.log(`in html routes page`);
-          // str = JSON.stringify(data, null, 4);
-          // // (Optional) beautiful indented output.
-          // console.log(str);
-
-          res.render("user", data);
-          // res.json(data);
-        });
+      .then((items) => {
+        console.log(`item find all /user htmlRoutes`);
+        str = JSON.stringify(items, null, 4);
+        // console.log(str);
+        data.items = items;
+        console.log(`data after items table find`);
+        dataStr = JSON.stringify(data, null, 4);
+        console.log(dataStr);
+        res.render("user", data);
       })
       .catch((err) => {
         console.log(err);
-        // res.redirect("/");
       });
+
+    // db.list
+    //   .findAll({
+    //     where: {
+    //       userId: req.user.id,
+    //     },
+    //     include: [db.item],
+    //   })
+    //   .then((userList) => {
+    //     data.userList = userList;
+    //     db.item.findAll({}).then((items) => {
+    //       data.items = items;
+    //       // just rendering the page at the moment, will udate to include data once the pug file is complete.
+    //       console.log(`data in /user get route with list`);
+    //       console.log(data);
+    //       res.render("user", data);
+    //       // res.json(data);
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     // res.redirect("/");
+    //   });
   });
 
   app.get("/usertest", (req, res) => {

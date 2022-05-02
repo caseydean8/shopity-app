@@ -25,7 +25,7 @@ block user
                         label Add to List:
                         ul#allGroceries.grocery-list 
                             #{data}
-                            for item, i in items
+                            each item in items
                                 li(class="item" data-id=item.id)=item.name
     
                 .lg-col-4
@@ -33,8 +33,14 @@ block user
                         label Your Shopping List: 
                         ul#userGroceries.grocery-list
                             #{data}
-                            for list, i in userList
-                                if list.onList
+                            each item in items 
+                                if item.category = -1
+                                    li(class="item"
+                                    data-id=item.id)
+                                        =item.name
+                            
+                            //- for list, i in userList
+                            //-     if list.onList
                                     li(class="item" data-id=list.itemId)=list.item.name
 
                 .lg-col-4
@@ -42,7 +48,7 @@ block user
                         label In Your Cart: 
                         ul#groceryCart.grocery-list
                             #{data}
-                            for list, i in userList
-                                if list.inCart
-                                    li(class="item" data-id=list.itemId)=list.item.name
+                            each item in items 
+                                if item.category= -1
+                                    li(class="item" data-id=item.id)=item.name
 
