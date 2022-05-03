@@ -2,7 +2,7 @@ const passport = require("../config/passport.js");
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const user = require("../models/user.js");
-const { it } = require("mocha");
+// const { it } = require("mocha");
 
 module.exports = (app) => {
   // this route finds all list items for the authenticated user, and returns them as a JSON object
