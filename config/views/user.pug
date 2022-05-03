@@ -17,7 +17,6 @@ block user
                         label Add Item:
                         form(class="create-form" action="/api/newitem" method="POST")
                             .form-group
-                                //- label Burger Name:
                                 input(type="text" name="name")
                                 button(type="submit") Add it
                 .lg-col-4
@@ -34,21 +33,17 @@ block user
                         ul#userGroceries.grocery-list
                             #{data}
                             each item in items 
-                                if item.category = -1
+                                if item.category === 0
                                     li(class="item"
                                     data-id=item.id)
                                         =item.name
                             
-                            //- for list, i in userList
-                            //-     if list.onList
-                                    li(class="item" data-id=list.itemId)=list.item.name
-
                 .lg-col-4
                     .right 
                         label In Your Cart: 
                         ul#groceryCart.grocery-list
                             #{data}
                             each item in items 
-                                if item.category= -1
+                                if item.category=== 1
                                     li(class="item" data-id=item.id)=item.name
 

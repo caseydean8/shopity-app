@@ -12,12 +12,15 @@ module.exports = function (sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.INTEGER,
+      validate: {
+        isInt: true,
+      },
     },
   });
   // original association
-  Item.associate = models => {
+  Item.associate = (models) => {
     Item.hasMany(models.list, {
-      onDelete: "cascade"
+      onDelete: "cascade",
     });
   };
 

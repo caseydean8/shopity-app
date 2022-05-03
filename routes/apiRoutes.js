@@ -2,6 +2,7 @@ const passport = require("../config/passport.js");
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const user = require("../models/user.js");
+const { it } = require("mocha");
 
 module.exports = (app) => {
   // this route finds all list items for the authenticated user, and returns them as a JSON object
@@ -61,8 +62,13 @@ module.exports = (app) => {
     str = JSON.stringify(req.body, null, 4);
     console.log(str);
     // use the req.body object to create a new entry in the items table
+    const itemCategory = -1;
     db.item
-      .create({ name: req.body.name, category: -1, userId: req.user.id })
+      .create({
+        name: req.body.name,
+        category: itemCategory,
+        userId: req.user.id,
+      })
       .then((newItem) => {
         // after that item is created, add it to the list table for the user
         let newListItem = {};
@@ -103,35 +109,19 @@ module.exports = (app) => {
   });
 
   app.post("/api/update", isAuthenticated, (req, res) => {
-    // pull together an obect to send to ther database that mirrors the lists db
-    let newItem = {};
-    newItem.userId = req.user.id;
-    newItem.itemId = req.body.itemId;
-    newItem.onList = req.body.onList;
-    newItem.inCart = req.body.inCart;
-
-    // check if the id/item pair exists
-    db.list
-      .findOne({
-        where: {
-          userId: newItem.userId,
-          itemId: newItem.itemId,
+    // pull together an obect to send to ther database that mirrors the lists
+    const { itemId, category } = req.body;
+    db.item
+      .update(
+        {
+          category: category,
         },
-      })
-      .then((theItem) => {
-        if (theItem) {
-          // if the item exists, update it and return it
-          db.list
-            .update(newItem, { where: { id: theItem.id } })
-            .then((updated) => {
-              res.json(updated);
-            });
-        } else {
-          // if the item does not exist, create it.
-          db.list.create(newItem).then((response) => {
-            res.json(response);
-          });
+        {
+          where: { id: itemId },
         }
+      )
+      .then((updated) => {
+        res.json(updated);
       });
   });
 };

@@ -82,47 +82,33 @@ $(document).ready(function () {
   $(function () {
     $("#allGroceries, #userGroceries, #groceryCart").dblclick(function (e) {
       var item = e.target;
+      let changedItem = {};
+      changedItem.itemId = $(item).attr("data-id");
       if (e.currentTarget.id === "allGroceries") {
         //move from all to user
-        let changedItem = {};
-        changedItem.itemId = $(item).attr("data-id");
-        changedItem.onList = true;
-        changedItem.inCart = false;
-        console.log(`move ${changedItem.itemId} to user list`);
+        changedItem.category = 0;
         $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
-            console.log(`in button click allGroceries`)
           }
         });
       } else if (e.currentTarget.id === "userGroceries") {
-        //move from user to all
-        let changedItem = {};
-        changedItem.itemId = $(item).attr("data-id");
-        changedItem.onList = false;
-        changedItem.inCart = true;
-        console.log(changedItem);
+        changedItem.category = 1;
         $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
-            console.log(`in button click in userGroceries`)
+            console.log(`in button click in userGroceries`);
           }
         });
       } else if (e.currentTarget.id === "groceryCart") {
-        //move from user to all
-        let changedItem = {};
-        changedItem.itemId = $(item).attr("data-id");
-        changedItem.onList = false;
-        changedItem.inCart = false;
-        console.log(changedItem);
+        changedItem.category = -1;
         $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
-            console.log(`in button click in grocery cart`)
+            console.log(`in button click in grocery cart`);
           }
         });
       }
-      
     });
   });
 
