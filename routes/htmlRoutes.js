@@ -42,10 +42,6 @@ module.exports = (app) => {
   app.get("/contact", (req, res) => {
     res.render("contact");
   });
-  // Load example page and pass in an example by id
-  app.get("/list", isAuthenticated, (req, res) => {
-    res.send("list");
-  });
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {

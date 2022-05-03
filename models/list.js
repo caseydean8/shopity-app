@@ -17,18 +17,18 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  List.associate = models => {
-    List.belongsTo(models.item, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    // List.belongsTo(models.user, {
-    //   foreignKey: {
-    //     allowNull: false
-    //   }
-    // });
-  };
+  // List.associate = models => {
+  //   List.belongsTo(models.item, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  //   List.belongsTo(models.user, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return List;
 };

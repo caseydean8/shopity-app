@@ -6,28 +6,28 @@ const { it } = require("mocha");
 
 module.exports = (app) => {
   // this route finds all list items for the authenticated user, and returns them as a JSON object
-  app.get("/api/userlist", isAuthenticated, (req, res) => {
-    let data = {};
-    data.user = {};
-    data.user.firstName = req.user.firstName;
-    data.user.lastName = req.user.lastName;
-    data.user.username = req.user.username;
+  // app.get("/api/userlist", isAuthenticated, (req, res) => {
+  //   let data = {};
+  //   data.user = {};
+  //   data.user.firstName = req.user.firstName;
+  //   data.user.lastName = req.user.lastName;
+  //   data.user.username = req.user.username;
 
-    db.list
-      .findAll({
-        where: {
-          userId: req.user.id,
-        },
-        include: [db.item],
-      })
-      .then((userList) => {
-        data.userList = userList;
-        db.item.findAll({}).then((items) => {
-          data.items = items;
-          res.json(data);
-        });
-      });
-  });
+  //   db.list
+  //     .findAll({
+  //       where: {
+  //         userId: req.user.id,
+  //       },
+  //       include: [db.item],
+  //     })
+  //     .then((userList) => {
+  //       data.userList = userList;
+  //       db.item.findAll({}).then((items) => {
+  //         data.items = items;
+  //         res.json(data);
+  //       });
+  //     });
+  // });
 
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
@@ -35,9 +35,6 @@ module.exports = (app) => {
     db.user
       .findOne({ where: { username: req.body.username } })
       .then((response) => {
-        console.log(req.body.username);
-        console.log("Response is below:");
-        console.log(response);
         if (response) {
           res.json({ status: "Username already exists." });
         } else {
@@ -49,7 +46,6 @@ module.exports = (app) => {
               res.json(req.body);
             })
             .catch((err) => {
-              // if there is an error, return the error
               res.json(err);
             });
         }
@@ -58,9 +54,6 @@ module.exports = (app) => {
 
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
-    console.log(`in /api/newitem post route`);
-    str = JSON.stringify(req.body, null, 4);
-    console.log(str);
     // use the req.body object to create a new entry in the items table
     const itemCategory = -1;
     db.item
@@ -69,14 +62,15 @@ module.exports = (app) => {
         category: itemCategory,
         userId: req.user.id,
       })
-      .then((newItem) => {
+      .then(() => {
+        // .then((newItem) => {
         // after that item is created, add it to the list table for the user
-        let newListItem = {};
+        // let newListItem = {};
         // pull together an obect to send to ther database that mirrors the lists db
-        newListItem.userId = req.user.id;
-        newListItem.itemID = newItem.id;
-        newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
-        newListItem.inCart = false;
+        // newListItem.userId = req.user.id;
+        // newListItem.itemID = newItem.id;
+        // newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
+        // newListItem.inCart = false;
         // redirect the user back to the /user route to redisplay the items list with the new item added.
         res.redirect("/user");
       });
