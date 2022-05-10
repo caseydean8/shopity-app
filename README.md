@@ -1,4 +1,4 @@
-# Project_2
+# Shopity
 
 <ul>
 <li>Casey Carroll
@@ -7,6 +7,8 @@
 </ul>
 <p>
 
-Our project 2 will be a shopping list app, where users can log in and create a list of food items to take shopping with them. They will be able to check those items off their list as they shop, and then move them into their pantry once they get home. Then they will be able to manage their pantry, and the app will notify users if they add an item to their shopping list that is already in their pantry. 
+Shopity is a helpful shopping assistant that allows users to login and create a list of pantry items, which can be added to a shopping list and then moved into a virtual cart. Shopity was created with the Pug template engine and SQL database with sequelize.js ORM.
+
+  <a href="https://shopity.herokuapp.com/">Check it out here.</a>
 
 
