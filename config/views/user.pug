@@ -1,5 +1,5 @@
 include head
-include jumbo2   
+include navbar-user   
 block user 
     .bg-image.list1
         .container 
@@ -18,7 +18,7 @@ block user
                         form(class="create-form" action="/api/newitem" method="POST")
                             .form-group
                                 input(type="text" name="name")
-                                button(type="submit") Add it
+                                button(class="add-item" type="submit") Add it
                 .lg-col-4
                     .left
                         label Add to List:

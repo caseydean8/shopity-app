@@ -290,7 +290,7 @@ a {
   cursor: pointer;
 }
 
-button {
+.add-item {
   width: 9.375rem;
   border-radius: 0.625rem;
   background-color: #2989f7;
