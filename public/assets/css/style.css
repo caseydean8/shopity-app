@@ -233,6 +233,12 @@ a {
   display: none;
 }
 
+@media screen and (max-device-width: 480px) {
+  #popup-box {
+    /* margin-top: 1px; */
+  }
+}
+
 #popup-close {
   position: absolute;
   top: 9px;
@@ -250,18 +256,12 @@ a {
 }
 
 #popup-box input {
-  padding: 0.625rem;
+  padding: 0.5rem;
   border: 0.0625rem solid #333;
   width: 80%;
   margin: 0 auto;
   margin-top: 0.625rem;
   display: block;
-}
-
-#popup-box button {
-  padding: 0.625rem;
-  border: 0.0625rem solid lightgray;
-  cursor: pointer;
 }
 
 .add-item {
@@ -284,9 +284,14 @@ a {
   width: 9rem;
   background-color: #2989f7;
   font-size: 1.25rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   margin: 0.625rem auto;
   color: white;
+}
+
+.add-user-err,
+.sign-in-err {
+  color: red;
 }
 
 .bg-image-color3 {

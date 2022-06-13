@@ -1,24 +1,24 @@
 include head
 include navbar
 block index
-    #{data}
+    //- #{data}
     if !authUser
         #list-builder
             #popup-box 
                 img#popup-close(src='assets/images/close.png')
                 #popup-box-content 
-                h1 Welcome
-                    div(id='“signinMessage”')
-                    
+                h3 Welcome
+                h4.sign-in-err
                 form#popup-form(action='https://email_list_service_api.com')
                     input(type='hidden' name='list' value='key_list_etc') 
                     input(type='text' id='username' placeholder='Email Address') 
                     = ' '
                     input(type='password' id='password' placeholder='Password')
                    
-                    button(class="btn sign-in" type='button' id='signin' class='pop-up-button') Sign in
+                    button(class="btn sign-in" type='button' id='signin') Sign in
                     
                     h5 Don't have an account? Create one!
+                    h4.add-user-err
                     div(id='“createMessage”')
                     input(type='hidden' name='list' value='key_list_etc')
                     input(type='text' id='first-name' placeholder='First Name') 
@@ -29,7 +29,7 @@ block index
                     = ' '
                     input(type='password' id='new-password' placeholder='Create Password')
                     
-                    button(class="btn sign-in" type='button' id='create' class='pop-up-button') Create Account              
+                    button(class="btn sign-in" type='button' id='create') Create Account              
         
     .bg-image.aisle2
         .container
@@ -218,14 +218,4 @@ block index
                     br
                     br
                     br
-                    //- .fab.fa-facebook-f
-                    //- .fab.fa-linkedin-in
-                    //- .fab.fa-twitter
-
-    .footer-margin
-        .card-footer
-        img#footerLogo(src='assets/images/footerlogo.png', alt='footer')
-        br
-        | Copyright 2019 
-        br
-        | All Rights Reserved. Created by NCN. 
+include footer

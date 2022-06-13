@@ -3,7 +3,7 @@ include navbar-user
 block user 
     .bg-image.list1
         .container 
-            #welcome Welcome Back, #{user.firstName}
+            #welcome Welcome #{user.firstName}
             p
                 | Double-click to move item from one list to the bottom of the other.
 
@@ -12,7 +12,7 @@ block user
             .row
                 .col
                     label Add Item:
-                    form(class="" action="/api/newitem" method="POST")
+                    form(action="/api/newitem" method="POST")
                         .form-group.row
                             .col-sm-8
                                 input(type="text" class="form-control" name="name")
@@ -41,6 +41,7 @@ block user
                     ul#groceryCart.grocery-list
                         #{data}
                         each item in items 
-                            if item.category=== 1
+                            if item.category === 1
                                 li(class="item" data-id=item.id)=item.name
 
+include footer

@@ -40,11 +40,13 @@ $(document).ready(function () {
     user.username = $("#username").val();
     user.password = $("#password").val();
     $.post("/login", user).then((response) => {
+      $(".sign-in-err").empty();
       if (response.status === "success") {
         window.location = "/user";
       } else {
         console.log(response);
         // display the response.message in the appropriate div to show the user why the login didnt work
+        $(".sign-in-err").append("please enter the correct username and password")
       }
     });
   });
@@ -72,6 +74,7 @@ $(document).ready(function () {
       } else {
         if (response.errors) {
           console.log(response.errors);
+          $(".add-user-err").append(`there was an error`)
         }
       }
     });
