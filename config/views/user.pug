@@ -3,47 +3,44 @@ include navbar-user
 block user 
     .bg-image.list1
         .container 
-            #{data}
-            .row
-        #welcome Welcome Back, #{user.firstName}
-        p
-            | Double-click to move item from one list to the bottom of the other.
+            #welcome Welcome Back, #{user.firstName}
+            p
+                | Double-click to move item from one list to the bottom of the other.
 
     .bg-image-color4 
         .container
             .row
-                .lg-col-4
-                    .grocery-add
-                        label Add Item:
-                        form(class="create-form" action="/api/newitem" method="POST")
-                            .form-group
-                                input(type="text" name="name")
-                                button(class="add-item" type="submit") Add it
-                .lg-col-4
-                    .left
-                        label Add to List:
-                        ul#allGroceries.grocery-list 
-                            #{data}
-                            each item in items
-                                li(class="item" data-id=item.id)=item.name
+                .col
+                    label Add Item:
+                    form(class="" action="/api/newitem" method="POST")
+                        .form-group.row
+                            .col-sm-8
+                                input(type="text" class="form-control" name="name")
+                            .col.add-item-btn
+                                button(class="btn add-item" type="submit") Add it
+            .row
+                .col-sm-4
+                    label Add to List:
+                    ul#allGroceries.grocery-list 
+                        #{data}
+                        each item in items
+                            li(class="item" data-id=item.id)=item.name
     
-                .lg-col-4
-                    .right 
-                        label Your Shopping List: 
-                        ul#userGroceries.grocery-list
-                            #{data}
-                            each item in items 
-                                if item.category === 0
-                                    li(class="item"
-                                    data-id=item.id)
-                                        =item.name
+                .col-sm-4
+                    label Your Shopping List: 
+                    ul#userGroceries.grocery-list
+                        #{data}
+                        each item in items 
+                            if item.category === 0
+                                li(class="item"
+                                data-id=item.id)
+                                    =item.name
                             
-                .lg-col-4
-                    .right 
-                        label In Your Cart: 
-                        ul#groceryCart.grocery-list
-                            #{data}
-                            each item in items 
-                                if item.category=== 1
-                                    li(class="item" data-id=item.id)=item.name
+                .col-sm-4
+                    label In Your Cart: 
+                    ul#groceryCart.grocery-list
+                        #{data}
+                        each item in items 
+                            if item.category=== 1
+                                li(class="item" data-id=item.id)=item.name
 
