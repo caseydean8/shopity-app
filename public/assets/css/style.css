@@ -290,7 +290,7 @@ a {
 }
 
 .add-user-err,
-.sign-in-err {
+.sign-in-err, .error {
   color: red;
 }
 

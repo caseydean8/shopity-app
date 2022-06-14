@@ -22,8 +22,6 @@ $(document).ready(function () {
     });
   }
 
-  // NEW 9.9.2019
-
   //click to get to home page
   $("#home").on("click", function () {
     window.location = "/";
@@ -46,19 +44,56 @@ $(document).ready(function () {
       } else {
         console.log(response);
         // display the response.message in the appropriate div to show the user why the login didnt work
-        $(".sign-in-err").append("please enter the correct username and password")
+        $(".sign-in-err").append(
+          "please enter the correct username and password"
+        );
+        $("#popup-form").trigger("reset");
       }
     });
   });
 
-  $("#create").on("click", () => {
+  $("#create-account").validate({
+    rules: {
+      firstname: "required",
+      lastname: "required",
+      email: {
+        required: true,
+        // minLength: 2,
+        email: true,
+      },
+      password: {
+        required: true,
+        // minLength: 9
+      },
+    },
+    messages: {
+      firstname: "Please enter your firstname",
+      lastname: "Please enter your last name",
+      email: {
+        required: "Please enter an email address",
+        email: "Please enter a valid email address",
+      },
+      password: {
+        required: "Please enter a password",
+      },
+    },
+  });
+
+  $("#create-account").validate(
+    userSubmit()
+  );
+
+  // $("").on("click", () => {
+  function userSubmit() {
     let newUser = {};
-    newUser.firstName = $("#first-name").val();
-    newUser.lastName = $("#last-name").val();
+    newUser.firstName = $("#firstname").val();
+    newUser.lastName = $("#lastname").val();
     newUser.username = $("#new-username").val();
     newUser.password = $("#new-password").val();
     $.post("/api/adduser", newUser).then((response) => {
       // if we had success creating the new user and the user object is returned to us
+      console.log(`newUser`);
+      console.log(newUser);
       if (response.firstName === newUser.firstName) {
         // redirect the user to the login route
         console.log("Calling post route to /login");
@@ -74,11 +109,12 @@ $(document).ready(function () {
       } else {
         if (response.errors) {
           console.log(response.errors);
-          $(".add-user-err").append(`there was an error`)
+          // $(".add-user-err").append(`there was an error`);
+          // $("#popup-form").trigger("reset");
         }
       }
     });
-  });
+  }
 
   //// user page
   // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]

@@ -9,7 +9,9 @@ block index
                 #popup-box-content 
                 h3 Welcome
                 h4.sign-in-err
-                form#popup-form(action='https://email_list_service_api.com')
+                // (action='https://email_list_service_api.com')
+ 
+                form#popup-form
                     input(type='hidden' name='list' value='key_list_etc') 
                     input(type='text' id='username' placeholder='Email Address') 
                     = ' '
@@ -19,17 +21,21 @@ block index
                     
                     h5 Don't have an account? Create one!
                     h4.add-user-err
-                    div(id='“createMessage”')
+                form(id="create-account")
                     input(type='hidden' name='list' value='key_list_etc')
-                    input(type='text' id='first-name' placeholder='First Name') 
-                    = ' '
-                    input(type='text' id='last-name' placeholder='Last Name') 
-                    = ' '
-                    input(type='text' id='new-username' placeholder='Email Address')
-                    = ' '
-                    input(type='password' id='new-password' placeholder='Create Password')
                     
-                    button(class="btn sign-in" type='button' id='create') Create Account              
+                    input(type='text' id='firstname' 
+                    name="firstname"
+                    placeholder='First Name' minLength="2" ) 
+                    
+                    input(type='text' id='lastname'
+                    name="lastname" placeholder='Last Name') 
+
+                    input(type='email' id='new-username' name="email" placeholder='Email Address')
+                    
+
+                    input(type='password' id='new-password' name="password" placeholder='Create Password')
+                    input(class="btn sign-in" type='submit' value="Create Account" id='create')        
         
     .bg-image.aisle2
         .container
