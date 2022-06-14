@@ -47,18 +47,25 @@ $(document).ready(function () {
         $(".sign-in-err").append(
           "please enter the correct username and password"
         );
+        validator.resetForm()
+        $("#create-account").trigger("reset");
         $("#popup-form").trigger("reset");
       }
     });
   });
 
+  jQuery.validator.setDefaults({
+    // debug: true,
+  });
+
+
   $("#create-account").validate({
+    // validator.form({
     rules: {
       firstname: "required",
       lastname: "required",
       email: {
         required: true,
-        // minLength: 2,
         email: true,
       },
       password: {
@@ -77,44 +84,39 @@ $(document).ready(function () {
         required: "Please enter a password",
       },
     },
+    submitHandler: function () {
+      let newUser = {};
+      newUser.firstName = $("#firstname").val();
+      newUser.lastName = $("#lastname").val();
+      newUser.username = $("#new-username").val();
+      newUser.password = $("#new-password").val();
+      $.post("/api/adduser", newUser).then((response) => {
+        if (response.status) {
+          $(".add-user-err").append(
+            "That email address already exists in our system"
+          );
+        }
+        if (response.firstName === newUser.firstName) {
+          console.log("Calling post route to /login");
+          $.post("/login", newUser).then((response) => {
+            console.log("inside post route");
+            if (response.status === "success") {
+              window.location = "/user";
+            } else {
+              console.log(response);
+            }
+          });
+        } else {
+          if (response.errors) {
+            console.log(response.errors);
+          }
+        }
+      });
+      // form.submit();
+    },
   });
 
-  $("#create-account").validate(
-    userSubmit()
-  );
-
-  // $("").on("click", () => {
-  function userSubmit() {
-    let newUser = {};
-    newUser.firstName = $("#firstname").val();
-    newUser.lastName = $("#lastname").val();
-    newUser.username = $("#new-username").val();
-    newUser.password = $("#new-password").val();
-    $.post("/api/adduser", newUser).then((response) => {
-      // if we had success creating the new user and the user object is returned to us
-      console.log(`newUser`);
-      console.log(newUser);
-      if (response.firstName === newUser.firstName) {
-        // redirect the user to the login route
-        console.log("Calling post route to /login");
-        $.post("/login", newUser).then((response) => {
-          console.log("inside post route");
-          if (response.status === "success") {
-            window.location = "/user";
-          } else {
-            console.log(response);
-            // display the response.message in the appropriate div to show the user why the login didnt work
-          }
-        });
-      } else {
-        if (response.errors) {
-          console.log(response.errors);
-          // $(".add-user-err").append(`there was an error`);
-          // $("#popup-form").trigger("reset");
-        }
-      }
-    });
-  }
+  const validator = $("#create-account").validate();
 
   //// user page
   // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]
