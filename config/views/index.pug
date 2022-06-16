@@ -1,7 +1,7 @@
 include head
 include navbar
 block index
-    //- #{data}
+    #{data}
     if !authUser
         #list-builder
             #popup-box 
@@ -9,9 +9,8 @@ block index
                 #popup-box-content 
                 h3 Welcome
                 h4.sign-in-err
-                // (action='https://email_list_service_api.com')
  
-                form#popup-form(action="https://email_list_service_api.com")
+                form#popup-form(action="")
                     input(type='hidden' name='list' value='key_list_etc') 
                     input(type='text' id='username' placeholder='Email Address') 
                     = ' '
@@ -21,7 +20,7 @@ block index
                     
                     h5 Don't have an account? Create one!
                     h4.add-user-err
-                form(id="create-account")
+                form#create-account
                     input(type='hidden' name='list' value='key_list_etc')
                     
                     input(type='text' id='firstname' 

@@ -1,14 +1,15 @@
 /* eslint-disable quotes */
 $(document).ready(function () {
   var delay = 300; // milliseconds
-  var cookieExpire = 0; // days
+  // var cookieExpire = 0; // days
+  let authUser = window.authUser;
 
-  var cookie = localStorage.getItem("list-builder");
-  if (cookie === undefined || cookie === null) {
-    cookie = 0;
-  }
+  // var cookie = localStorage.getItem("list-builder");
+  // if (cookie === undefined || cookie === null) {
+  //   cookie = 0;
+  // }
 
-  if ((new Date().getTime() - cookie) / (1000 * 60 * 60 * 24) > cookieExpire) {
+  function showLoginModal() {
     $("#list-builder")
       .delay(delay)
       .fadeIn("fast", () => {
@@ -22,14 +23,30 @@ $(document).ready(function () {
     });
   }
 
+  $(".trigger-modal").on("click", function () {
+    console.log(authUser);
+    showLoginModal();
+    // window.location = "/user";
+  });
+
+  // shows sign in modal on start
+  // if ((new Date().getTime() - cookie) / (1000 * 60 * 60 * 24) > cookieExpire) {
+  //   $("#list-builder")
+  //     .delay(delay)
+  //     .fadeIn("fast", () => {
+  //       // eslint-disable-next-line no-empty-function
+  //       $("#popup-box").fadeIn("fast", () => {});
+  //     });
+
+  //   $("#popup-close").click(() => {
+  //     $("#list-builder, #popup-box").hide();
+  //     localStorage.setItem("list-builder", new Date().getTime());
+  //   });
+  // }
+
   //click to get to home page
   $("#home").on("click", function () {
     window.location = "/";
-  });
-
-  // click to get to user page
-  $("#myAccount").on("click", function () {
-    window.location = "/user";
   });
 
   // click to get to user page
@@ -47,20 +64,15 @@ $(document).ready(function () {
         $(".sign-in-err").append(
           "please enter the correct username and password"
         );
-        validator.resetForm()
+        validator.resetForm();
         $("#create-account").trigger("reset");
         $("#popup-form").trigger("reset");
       }
     });
   });
 
-  jQuery.validator.setDefaults({
-    // debug: true,
-  });
-
-
+  // validate form inputs and display errors before sending new user to database.
   $("#create-account").validate({
-    // validator.form({
     rules: {
       firstname: "required",
       lastname: "required",
@@ -97,14 +109,11 @@ $(document).ready(function () {
           );
         }
         if (response.firstName === newUser.firstName) {
-          console.log("Calling post route to /login");
           $.post("/login", newUser).then((response) => {
-            console.log("inside post route");
-            if (response.status === "success") {
-              window.location = "/user";
-            } else {
-              console.log(response);
-            }
+            response.status === "success"
+              ? console.log("success logging in") // remove this line
+              : // isAuthenticated()
+                console.log(response);
           });
         } else {
           if (response.errors) {
@@ -112,7 +121,6 @@ $(document).ready(function () {
           }
         }
       });
-      // form.submit();
     },
   });
 
@@ -152,6 +160,11 @@ $(document).ready(function () {
       }
     });
   });
+
+  // set local storage "isAuthenticated" to false
+  // $("#log-out").click(function () {
+  //   localStorage.setItem("isAuthenticated", false);
+  // });
 
   // contact page
 

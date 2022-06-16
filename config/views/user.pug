@@ -1,8 +1,10 @@
 include head
 include navbar-user   
 block user 
+
     .bg-image.list1
         .container 
+            #{data}
             #welcome Welcome #{user.firstName}
             p
                 | Double-click to move item from one list to the bottom of the other.

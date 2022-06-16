@@ -15,6 +15,8 @@ module.exports = (app) => {
 
   // loads user and list and items, sends data to pug file
   app.get("/user", isAuthenticated, (req, res) => {
+    console.log(`/user route in htmlRoutes, isAuthenticated`)
+    console.log(isAuthenticated)
     let data = {};
     data.user = {};
     data.user.firstName = req.user.firstName;
