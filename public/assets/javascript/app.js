@@ -1,17 +1,11 @@
 /* eslint-disable quotes */
 $(document).ready(function () {
-  var delay = 300; // milliseconds
-  // var cookieExpire = 0; // days
   let authUser = window.authUser;
-
-  // var cookie = localStorage.getItem("list-builder");
-  // if (cookie === undefined || cookie === null) {
-  //   cookie = 0;
-  // }
+  authUser === "true" ? (authUser = true) : (authUser = false);
 
   function showLoginModal() {
     $("#list-builder")
-      .delay(delay)
+      .delay(300)
       .fadeIn("fast", () => {
         // eslint-disable-next-line no-empty-function
         $("#popup-box").fadeIn("fast", () => {});
@@ -23,26 +17,13 @@ $(document).ready(function () {
     });
   }
 
-  $(".trigger-modal").on("click", function () {
-    console.log(authUser);
-    showLoginModal();
-    // window.location = "/user";
+  $("#account-tab").on("click", function () {
+    authUser ? (window.location = "/user") : showLoginModal();
   });
 
-  // shows sign in modal on start
-  // if ((new Date().getTime() - cookie) / (1000 * 60 * 60 * 24) > cookieExpire) {
-  //   $("#list-builder")
-  //     .delay(delay)
-  //     .fadeIn("fast", () => {
-  //       // eslint-disable-next-line no-empty-function
-  //       $("#popup-box").fadeIn("fast", () => {});
-  //     });
-
-  //   $("#popup-close").click(() => {
-  //     $("#list-builder, #popup-box").hide();
-  //     localStorage.setItem("list-builder", new Date().getTime());
-  //   });
-  // }
+  $("#sign-up-tab").on("click", function () {
+    showLoginModal();
+  });
 
   //click to get to home page
   $("#home").on("click", function () {
@@ -111,9 +92,8 @@ $(document).ready(function () {
         if (response.firstName === newUser.firstName) {
           $.post("/login", newUser).then((response) => {
             response.status === "success"
-              ? console.log("success logging in") // remove this line
-              : // isAuthenticated()
-                console.log(response);
+              ? (window.location = "/user")
+              : console.log(response);
           });
         } else {
           if (response.errors) {
@@ -146,7 +126,6 @@ $(document).ready(function () {
         $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
-            console.log(`in button click in userGroceries`);
           }
         });
       } else if (e.currentTarget.id === "groceryCart") {
@@ -154,40 +133,29 @@ $(document).ready(function () {
         $.post("/api/update", changedItem).then((response) => {
           if (response) {
             window.location = "/user";
-            console.log(`in button click in grocery cart`);
           }
         });
       }
     });
   });
 
-  // set local storage "isAuthenticated" to false
-  // $("#log-out").click(function () {
-  //   localStorage.setItem("isAuthenticated", false);
-  // });
-
   // contact page
-
   linePage();
   cycleText();
 
   function linePage() {
     var splitMe = $(".sentence");
-
     // eslint-disable-next-line no-unused-vars
     splitMe.each(function (index) {
       var text = $(this).html();
       var output = "";
-
       //split all letters into spans
       for (var i = 0, len = text.length; i < len; i++) {
         // eslint-disable-next-line prettier/prettier
         output += '<span data-index="' + i + '">' + text[i] + "</span>";
       }
-
       //put it in the html
       $(this).html(output);
-
       //check the offset of each letter to figure out where the line breaks
       var prev = 0;
       var parts = [];
@@ -199,12 +167,9 @@ $(document).ready(function () {
             prev = $(this).offset().top;
           }
         });
-
       parts.push(text.length);
-
       //create final
       var finalOutput = "";
-
       parts.forEach(function (endPoint, i) {
         if (endPoint > 0) {
           finalOutput +=
@@ -215,7 +180,6 @@ $(document).ready(function () {
             "</span></span>";
         }
       });
-
       $(this).html(finalOutput);
       $(this).addClass("lined");
     });
