@@ -110,51 +110,50 @@ $(document).ready(function () {
   // User Page
   // check database for a duplicate before adding
   $(".add-item").on("click", function () {
-    console.log("CLICKED");
     let newItem = {};
     newItem.name = $(".form-control").val();
-    console.log(newItem);
     $.post("/api/newitem", newItem).then((response) => {
-      console.log(response);
-      if (response.status) {
-        $("input.form-control").after(
-          "<label class='error'>item already added</label>"
-        );
-      }
+      response.status
+        ? $("input.form-control").after(
+            "<label class='error'>item already added</label>"
+          )
+        : $.post("/api/update", newItem).then(
+            () => (window.location = "/user")
+          );
     });
   });
 
   // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]
-  // $(function () {
-  //   $("#allGroceries, #userGroceries, #groceryCart").dblclick(function (e) {
-  //     var item = e.target;
-  //     let changedItem = {};
-  //     changedItem.itemId = $(item).attr("data-id");
-  //     if (e.currentTarget.id === "allGroceries") {
-  //       //move from all to user
-  //       changedItem.category = 0;
-  //       $.post("/api/update", changedItem).then((response) => {
-  //         if (response) {
-  //           window.location = "/user";
-  //         }
-  //       });
-  //     } else if (e.currentTarget.id === "userGroceries") {
-  //       changedItem.category = 1;
-  //       $.post("/api/update", changedItem).then((response) => {
-  //         if (response) {
-  //           window.location = "/user";
-  //         }
-  //       });
-  //     } else if (e.currentTarget.id === "groceryCart") {
-  //       changedItem.category = -1;
-  //       $.post("/api/update", changedItem).then((response) => {
-  //         if (response) {
-  //           window.location = "/user";
-  //         }
-  //       });
-  //     }
-  //   });
-  // });
+  $(function () {
+    $("#allGroceries, #userGroceries, #groceryCart").dblclick(function (e) {
+      var item = e.target;
+      let changedItem = {};
+      changedItem.itemId = $(item).attr("data-id");
+      if (e.currentTarget.id === "allGroceries") {
+        //move from all to user
+        changedItem.category = 0;
+        $.post("/api/update", changedItem).then((response) => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      } else if (e.currentTarget.id === "userGroceries") {
+        changedItem.category = 1;
+        $.post("/api/update", changedItem).then((response) => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      } else if (e.currentTarget.id === "groceryCart") {
+        changedItem.category = -1;
+        $.post("/api/update", changedItem).then((response) => {
+          if (response) {
+            window.location = "/user";
+          }
+        });
+      }
+    });
+  });
 
   // contact page
   linePage();

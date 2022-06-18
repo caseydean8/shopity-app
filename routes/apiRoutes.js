@@ -55,24 +55,21 @@ module.exports = (app) => {
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
     // use the req.body object to create a new entry in the items table
-    console.log(req.body);
-    const itemCategory = -1;
     db.item.findOne({ where: { name: req.body.name } }).then((response) => {
       if (response) {
         res.json({ status: "duplicate" });
+      } else {
+        const itemCategory = -1;
+        db.item
+          .create({
+            name: req.body.name,
+            category: itemCategory,
+            userId: req.user.id,
+          })
+          .then(() => {
+            res.redirect("/user");
+          });
       }
-      //  else {
-      //   db.item
-      //     .create({
-      //       name: req.body.name,
-      //       category: itemCategory,
-      //       userId: req.user.id,
-      //     })
-      //     .then(() => {
-      //       // res.send({ duplicate: false });
-      //       res.redirect("/user");
-      //     });
-      // }
     });
   });
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
@@ -114,6 +111,7 @@ module.exports = (app) => {
         }
       )
       .then((updated) => {
+        console.log(updated)
         res.json(updated);
       });
   });
