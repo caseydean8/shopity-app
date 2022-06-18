@@ -27,7 +27,9 @@ module.exports = (app) => {
       .then((items) => {
         // add array of items to data object to send to pug
         data.items = items;
+        // console.log(data.items);
         res.render("user", data);
+        // console.log(data)
       })
       .catch((err) => {
         console.log(err);

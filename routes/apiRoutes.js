@@ -55,27 +55,26 @@ module.exports = (app) => {
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
     // use the req.body object to create a new entry in the items table
+    console.log(req.body);
     const itemCategory = -1;
-    db.item
-      .create({
-        name: req.body.name,
-        category: itemCategory,
-        userId: req.user.id,
-      })
-      .then(() => {
-        // .then((newItem) => {
-        // after that item is created, add it to the list table for the user
-        // let newListItem = {};
-        // pull together an obect to send to ther database that mirrors the lists db
-        // newListItem.userId = req.user.id;
-        // newListItem.itemID = newItem.id;
-        // newListItem.onList = true; // we want the item on the user's shopping list if they're adding it...
-        // newListItem.inCart = false;
-        // redirect the user back to the /user route to redisplay the items list with the new item added.
-        res.redirect("/user");
-      });
+    db.item.findOne({ where: { name: req.body.name } }).then((response) => {
+      if (response) {
+        res.json({ status: "duplicate" });
+      }
+      //  else {
+      //   db.item
+      //     .create({
+      //       name: req.body.name,
+      //       category: itemCategory,
+      //       userId: req.user.id,
+      //     })
+      //     .then(() => {
+      //       // res.send({ duplicate: false });
+      //       res.redirect("/user");
+      //     });
+      // }
+    });
   });
-
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
   app.post("/login", function (req, res, next) {
     passport.authenticate("local", function (err, user, info) {
