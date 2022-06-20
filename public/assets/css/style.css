@@ -73,36 +73,51 @@ a {
   height: 100%;
 }
 
+/* cursive "rates and reviews */
 #tagline {
   margin: 0 auto;
   font-size: 5rem;
   color: white;
   font-family: "Nanum Pen Script", cursive;
 }
+/* review cards */
+
+.tagline {
+  min-height: 166px;
+  margin: .3125rem;
+  padding: .3125rem;
+  font-size: 1.4rem;
+}
+
+.review {
+  padding:15px 15px;
+}
+
+.review-img {
+  min-width: 163px
+}
 
 #tagline2 {
-  float: left;
-  font-size: 23px;
   color: black;
   margin: 0 auto;
 }
 
 #tagline3 {
-  float: left;
+  /* float: left; */
 
   font-size: 20px;
   color: black;
 }
 
 #tagline4 {
-  font-size: 80px;
+  font-size: 3.125rem;
   margin-left: 18%;
   color: white;
 }
 
 #tagline5 {
   color: white;
-  font-size: 80px;
+  font-size: 3.875rem;
   font-family: "Raleway Dots", cursive;
   text-align: center;
   padding-top: 10px;
@@ -110,22 +125,17 @@ a {
 }
 
 #tagline6 {
-  float: right;
   margin: 0 auto;
-  font-size: 22px;
   color: black;
 }
 
 .triple-box {
   width: 16.875rem;
-  /* height: 200px; */
   background: white;
   opacity: 0.85;
   border-radius: 10%;
   margin: .5rem auto;
   padding: 0.625rem;
-  /* margin-top: 1rem; */
-  /* cursor: pointer; */
 }
 
 .fa-list-alt,
@@ -432,9 +442,9 @@ p {
 #reviews {
   font-size: 30px;
   font-weight: bold;
-  margin-left: 160px;
   padding-bottom: 30px;
   font-family: "Sacramento", cursive;
+  text-align: center;
 }
 
 /* Slider */

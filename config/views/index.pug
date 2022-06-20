@@ -57,16 +57,14 @@ block index
     .bg-image-color1
         .container
             .row
-            #tagline4
-                i.fas.fa-grip-lines
-                |  FAST &amp; EFFICIENT 
-                i.fas.fa-grip-lines
+                #tagline4.mx-auto
+                    //- i.fas.fa-grip-lines
+                    |  FAST &amp; EFFICIENT 
+                    //- i.fas.fa-grip-lines
 
     .bg-image.aisle4
-        .container
-            br
-            br
-            #partners Sponsored Partners
+        .container-fluid.p-0
+            //- #partners Sponsored Partners
             section.customer-logos.slider
                .slide 
                img(src='/assets/images/walmart.png')
@@ -84,86 +82,74 @@ block index
     .bg-image-color2
         .container
             .row
-            #tagline5
-                | simplify with shopify
+            #tagline5 simplify with shopify
 
-    .bg-white
-        .container
-        .row 
-        #reviews
-           | Rates and Reviews
-           br
-           
-        .row 
-            .lg-col-6
-            #tagline2
-                i.fas.fa-quote-left
-                |  &nbspVery simple to use. I have an easier time finding things
-                br
-                |  while shopping and helps me prepare meals for my family&nbsp
-                i.fas.fa-quote-right
-                br
-                #member - Ronessa, a member since 5/19
-                img(src='/assets/images/ronessa.png')
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                br
-                br
-                hr
+    .review.container
+        #reviews 
+            h1 Rates and Reviews
+        
+        .row.mx-auto
+            .col-lg-6
+                #tagline2.tagline
+                    //- i.fas.fa-quote-left
+                    | "Very simple to use. I have an easier time finding things while shopping and helps me prepare meals for my family"
+                    //- i.fas.fa-quote-right
+                    .row
+                        .col-5.review-img
+                            img(src='/assets/images/ronessa.png')
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                        .col.ml-auto
+                            #member - Ronessa, a member since 5/19
 
-            .lg-col-6
-            #tagline6
-                i.fas.fa-quote-left
-                |  &nbspShopify is so convenient. 
-                |  No more aimless wandering 
-                br
-                |  around the grocery store aisles. 
-                |  I save money this way.&nbsp
-                i.fas.fa-quote-right
-                br
-                #member - Aaron, a member since 1/19
-                img(src='/assets/images/aaron.png')
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                br
-                br
-                hr
+                #tagline6.tagline
+                    i.fas.fa-quote-left
+                    |  &nbspShopify is so convenient. 
+                    |  No more aimless wandering 
+                    br
+                    |  around the grocery store aisles. 
+                    |  I save money this way.&nbsp
+                    i.fas.fa-quote-right
+                    br
+                    #member - Aaron, a member since 1/19
+                    img(src='/assets/images/aaron.png')
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
 
-            .row 
-            .lg-col-6
-            #tagline2
-                i.fas.fa-quote-left
-                |   &nbspPretty simple to use and follow along with while shopping&nbsp
-                i.fas.fa-quote-right
-                br
-                #member - Bryan, a member since 8/19
-                img(src='/assets/images/bryan.png')
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span#star.fa.fa-star.fa-xs
+            .col-lg-6
+                #tagline2.tagline
+                    i.fas.fa-quote-left
+                    |   &nbspPretty simple to use and follow along with while shopping&nbsp
+                    i.fas.fa-quote-right
+                    br
+                    #member - Bryan, a member since 8/19
+                    img(src='/assets/images/bryan.png')
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span#star.fa.fa-star.fa-xs
 
-            .lg-col-6
-            #tagline6
-                i.fas.fa-quote-left
-                |   &nbspI love this app!!!!! Great for organizing your list.&nbsp
-                i.fas.fa-quote-right
-                br
-                #member - Caroline, a member since 3/19
-                img(src='/assets/images/caroline.png')
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                span.fa.fa-star.fa-xs
-                
+                //- .lg-col-6
+                #tagline6.tagline
+                    i.fas.fa-quote-left
+                    |   &nbspI love this app!!!!! Great for organizing your list.&nbsp
+                    i.fas.fa-quote-right
+                    br
+                    #member - Caroline, a member since 3/19
+                    img(src='/assets/images/caroline.png')
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                    span.fa.fa-star.fa-xs
+                        
 
     .bg-image-color3
         .container
