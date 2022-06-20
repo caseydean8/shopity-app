@@ -75,8 +75,7 @@ a {
 
 #tagline {
   margin: 0 auto;
-  margin-top: 60px;
-  font-size: 80px;
+  font-size: 5rem;
   color: white;
   font-family: "Nanum Pen Script", cursive;
 }
@@ -118,14 +117,15 @@ a {
 }
 
 .triple-box {
-  width: 260px;
-  height: 200px;
+  width: 16.875rem;
+  /* height: 200px; */
   background: white;
   opacity: 0.85;
   border-radius: 10%;
-  margin: 0 auto;
-  margin-top: 1rem;
-  cursor: pointer;
+  margin: .5rem auto;
+  padding: 0.625rem;
+  /* margin-top: 1rem; */
+  /* cursor: pointer; */
 }
 
 .fa-list-alt,
