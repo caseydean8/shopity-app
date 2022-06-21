@@ -1,78 +1,29 @@
-doctype html
-
-html
-    head
-        meta(charset='UTF-8')
-        |     
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        |     
-        meta(http-equiv='X-UA-Compatible', content='ie=edge')
-        |     
-        title NCN SHOPIFY
-        // Bootstrap
-        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
-
-        // CSS
-        link(rel='stylesheet', href='/assets/css/style2.css')
-        link(rel="stylesheet", type="text/css", href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css")
-
-        // jQuery
-        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
-        // Google Fonts
-        |
-        link(href='https://fonts.googleapis.com/css?family=Caveat|Abel|Nanum+Pen+Script|Acme|Raleway+Dots|Chilanka|Sacramento&display=swap', rel='stylesheet')
-
-        // Font Awesome Icons
-        link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.0/css/all.css')     
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-        |     
-        |
-        script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
-        |
-        // JQuery & Java
-        script(src='assets/javascript/app.js')
-        script(type="text/javascript", src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js")
-
-    body
+include head
+include navbar 
+block contact
    
     .bg-image-color3
+        #teamline MEET THE CREATORS
         .container
-            #teamline
-                | MEET THE CREATORS
 
             div#image-holder.row
-            
-                .col-4
-                    img#nathan(src='/assets/images/nathan.png', alt='nathan')
-                    .container
-                    h4 Nathan Hill 
-                    p2 Server-side + DB, Back-End Developer 
+                .col-12.col-md-4.creator-card
+                        img(src='/assets/images/nathan.png', alt='nathan')
+                        h4 Nathan Hill 
+                        p2 Server-side + DB, Back-End Developer 
                     
 
-                .col-4
-                    img#casey(src='assets/images/casey.png', alt='casey')
+                .col-12.col-md-4.creator-card
+                    img(src='assets/images/casey.png', alt='casey')
                     .container
                     h4 Casey Carroll
                     p2 Innovation, New Technology Developer
                     
 
-                .col-4
-                    img#nicole(src='assets/images/nicole.png', alt='nicole')
+                .col-12.col-md-4.creator-card
+                    img(src='assets/images/nicole.png', alt='nicole')
                     .container
                     h4 Nicole LaSusa
                     p2 Creative Design, Front-End Developer 
-                    br
-                    br
-                    br
 
-       p.item-1 How are we doing? 
-           |  We would love to hear from you...
-       p.item-2
-           |  Thank you for being a valued customer!
-       p.item-3
-           |  simplify with shopify 
-       button#rateUs(type='button') Rate Us
-       button#contactUs(type='button') Contact Us
+include footer

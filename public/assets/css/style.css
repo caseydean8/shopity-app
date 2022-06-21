@@ -89,7 +89,7 @@ a {
   font-size: 3.125rem;
   color: white;
   background: rgb(0, 128, 0, 0.3);
-  margin: 0
+  margin: 0;
 }
 
 #tagline5 {
@@ -238,6 +238,9 @@ a {
     width: 40%;
     margin-left: 60%;
   }
+  .creator-card {
+    border-bottom: 2px solid white;
+  }
 }
 
 .sign-in {
@@ -267,11 +270,8 @@ a {
 }
 
 #teamline {
-  font-size: 70px;
-  color: black;
+  font-size: 2.75rem;
   background-color: rgb(223, 223, 35);
-  padding: 20px;
-  border-radius: 10px;
   text-align: center;
 }
 
@@ -286,17 +286,13 @@ p2 {
   color: white;
 }
 
-#nathan,
-#casey,
-#nicole {
-  border: 7px solid #e6e3e3ef;
-  border-radius: 75px;
-  background-color: #e6e3e3ef;
-  margin-top: 50px;
+#image-holder {
+  text-align: center;
 }
 
-#image-holder {
-  padding: 1rem;
+.creator-card {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 #welcome,
