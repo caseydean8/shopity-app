@@ -1,0 +1,37 @@
+
+#{data}
+    if !authUser
+        #list-builder
+            #popup-box 
+                img#popup-close(src='assets/images/close.png')
+                #popup-box-content 
+                h3 Welcome
+                h4.sign-in-err
+ 
+                form#popup-form(action="")
+                    input(type='hidden' name='list' value='key_list_etc') 
+                    input(type='text' id='username' placeholder='Email Address') 
+                    = ' '
+                    input(type='password' id='password' placeholder='Password')
+                   
+                    button(class="btn sign-in" type='button' id='signin') Sign in
+                    
+                    h5 Don't have an account? Create one!
+                    h4.add-user-err
+                form#create-account
+                    input(type='hidden' name='list' value='key_list_etc')
+                    
+                    input(type='text' id='firstname' 
+                    name="firstname"
+                    placeholder='First Name' minLength="2" ) 
+                    
+                    input(type='text' id='lastname'
+                    name="lastname" placeholder='Last Name') 
+
+                    input(type='email' id='new-username' name="email" placeholder='Email Address')
+                    
+
+                    input(type='password' id='new-password' name="password" placeholder='Create Password')
+
+                    button(class="btn sign-in" type='submit' id='create') Create Account      
+        
