@@ -2,14 +2,6 @@ body {
   font-family: "Abel", sans-serif;
 }
 
-.lg-col-4 {
-  -ms-user-select: auto;
-  -moz-user-select: auto;
-  -khtml-user-select: auto;
-  -webkit-user-select: auto;
-  user-select: auto;
-}
-
 .navbar {
   padding-bottom: 0;
 }
@@ -46,6 +38,8 @@ a {
 .aisle2 {
   background-image: url("/assets/images/aisle2.jpg");
   height: 100%;
+  min-height: 44vh;
+  padding-bottom: 0.9375rem;
 }
 
 .aisle3 {
@@ -56,6 +50,7 @@ a {
 .aisle4 {
   background-image: url("/assets/images/aisle4.jpg");
   height: 100%;
+  border-top: 2px solid white;
 }
 
 .aisle5 {
@@ -79,40 +74,22 @@ a {
   font-size: 5rem;
   color: white;
   font-family: "Nanum Pen Script", cursive;
+  text-align: center;
 }
 /* review cards */
 
 .tagline {
   min-height: 166px;
-  margin: .3125rem;
-  padding: .3125rem;
+  margin: 0.3125rem;
+  padding: 0.3125rem;
   font-size: 1.4rem;
-}
-
-.review {
-  padding:15px 15px;
-}
-
-.review-img {
-  min-width: 163px
-}
-
-#tagline2 {
-  color: black;
-  margin: 0 auto;
-}
-
-#tagline3 {
-  /* float: left; */
-
-  font-size: 20px;
-  color: black;
 }
 
 #tagline4 {
   font-size: 3.125rem;
-  margin-left: 18%;
   color: white;
+  background: rgb(0, 128, 0, 0.3);
+  margin: 0
 }
 
 #tagline5 {
@@ -124,43 +101,19 @@ a {
   padding-bottom: 20px;
 }
 
-#tagline6 {
-  margin: 0 auto;
-  color: black;
-}
-
 .triple-box {
   width: 16.875rem;
   background: white;
   opacity: 0.85;
-  border-radius: 10%;
-  margin: .5rem auto;
-  padding: 0.625rem;
+  border-radius: 10px;
+  margin: 0.5rem auto;
+  padding: 10px;
 }
 
 .fa-list-alt,
 .fa-check-double,
 .fa-comments-dollar {
-  margin-bottom: 10px;
-  margin-top: 30px;
-  margin-left: 105px;
   font-size: 40px;
-  color: black;
-  cursor: pointer;
-}
-
-.fa-quote-left,
-.fa-quote-right {
-  font-size: 21px;
-  color: gray;
-}
-
-.fa-quote-left {
-  float: left;
-}
-
-.fa-quote-right {
-  float: right;
 }
 
 #bubble {
@@ -173,7 +126,6 @@ a {
 
 #howTo {
   text-align: center;
-  font-size: black;
   font-size: 20px;
   margin-top: 12px;
 }
@@ -247,12 +199,6 @@ a {
   display: none;
 }
 
-@media screen and (max-device-width: 480px) {
-  #popup-box {
-    /* margin-top: 1px; */
-  }
-}
-
 #popup-close {
   position: absolute;
   top: 9px;
@@ -304,7 +250,8 @@ a {
 }
 
 .add-user-err,
-.sign-in-err, .error {
+.sign-in-err,
+.error {
   color: red;
 }
 
@@ -432,7 +379,7 @@ p {
 #member {
   font-size: 19px;
   color: green;
-  float: right;
+  text-align: right;
 }
 
 #star {
@@ -442,13 +389,12 @@ p {
 #reviews {
   font-size: 30px;
   font-weight: bold;
-  padding-bottom: 30px;
+  padding-top: 0.9375rem;
   font-family: "Sacramento", cursive;
   text-align: center;
 }
 
 /* Slider */
-
 .slick-slide {
   margin: 0px 20px;
 }

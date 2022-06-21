@@ -37,33 +37,30 @@ block index
 
                     button(class="btn sign-in" type='submit' id='create') Create Account      
         
-    .bg-image.aisle2
+    .bg-image.aisle2.d-flex.align-items-center
         .container
             .row.mx-auto
                 h1#tagline Shopping Made Easy
             .row
-                div#box1.triple-box
-                    i.far.fa-list-alt                 
+                .triple-box
+                    .d-flex.justify-content-center
+                        i.far.fa-list-alt                 
                     #howTo create a master list of commonly used items                     
                 
-                div#box2.triple-box
-                    i.fas.fa-check-double
+                .triple-box
+                    .d-flex.justify-content-center
+                        i.fas.fa-check-double
                     #howTo add items to your shopping list with one click
                 |                 
-                div#box3.triple-box
-                    i.fas.fa-comments-dollar
+                .triple-box
+                    .d-flex.justify-content-center
+                        i.fas.fa-comments-dollar
                     #howTo quickly check items off your list once they are in cart
-
-    .bg-image-color1
-        .container
-            .row
-                #tagline4.mx-auto
-                    //- i.fas.fa-grip-lines
-                    |  FAST &amp; EFFICIENT 
-                    //- i.fas.fa-grip-lines
 
     .bg-image.aisle4
         .container-fluid.p-0
+            #tagline4.row
+                .mx-auto FAST &amp; EFFICIENT
             //- #partners Sponsored Partners
             section.customer-logos.slider
                .slide 
@@ -81,7 +78,6 @@ block index
 
     .bg-image-color2
         .container
-            .row
             #tagline5 simplify with shopify
 
     .review.container
@@ -90,94 +86,57 @@ block index
         
         .row.mx-auto
             .col-lg-6
-                #tagline2.tagline
-                    //- i.fas.fa-quote-left
-                    | "Very simple to use. I have an easier time finding things while shopping and helps me prepare meals for my family"
-                    //- i.fas.fa-quote-right
-                    .row
-                        .col-5.review-img
+                .tagline
+                    |"Very simple to use. I have an easier time finding things while shopping and helps me prepare meals for my family"
+                    .row.justify-content-between
+                        .col-12.col-md-5
                             img(src='/assets/images/ronessa.png')
                             span.fa.fa-star.fa-xs
                             span.fa.fa-star.fa-xs
                             span.fa.fa-star.fa-xs
                             span.fa.fa-star.fa-xs
                             span.fa.fa-star.fa-xs
-                        .col.ml-auto
-                            #member - Ronessa, a member since 5/19
+                        #member.col-12.col-md-7
+                            span - Ronessa, member since 5/19
 
-                #tagline6.tagline
-                    i.fas.fa-quote-left
-                    |  &nbspShopify is so convenient. 
-                    |  No more aimless wandering 
-                    br
-                    |  around the grocery store aisles. 
-                    |  I save money this way.&nbsp
-                    i.fas.fa-quote-right
-                    br
-                    #member - Aaron, a member since 1/19
-                    img(src='/assets/images/aaron.png')
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
+                .tagline
+                    |"Shopify is so convenient. No more aimless wandering around the grocery store aisles. I save money this way."
+                    .row.justify-content-between 
+                        .col-12.col-md-5
+                            img(src='/assets/images/aaron.png')
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                        #member.col-12.col-md-7
+                            span - Aaron member since 1/19
 
             .col-lg-6
-                #tagline2.tagline
-                    i.fas.fa-quote-left
-                    |   &nbspPretty simple to use and follow along with while shopping&nbsp
-                    i.fas.fa-quote-right
-                    br
-                    #member - Bryan, a member since 8/19
-                    img(src='/assets/images/bryan.png')
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span#star.fa.fa-star.fa-xs
+                .tagline
+                    |"Pretty simple to use and follow along with while shopping"
+                    .row.justify-content-between 
+                        .col-12.col-md-5
+                            img(src='/assets/images/bryan.png')
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span#star.fa.fa-star.fa-xs
+                        #member.col-12.col-md-7
+                            span - Bryan member since 8/19
 
-                //- .lg-col-6
-                #tagline6.tagline
-                    i.fas.fa-quote-left
-                    |   &nbspI love this app!!!!! Great for organizing your list.&nbsp
-                    i.fas.fa-quote-right
-                    br
-                    #member - Caroline, a member since 3/19
-                    img(src='/assets/images/caroline.png')
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
-                    span.fa.fa-star.fa-xs
+                .tagline
+                    |"I love this app!!!!! Great for organizing your list."
+                    .row.justify-content-between
+                        .col-12.col-md-5
+                            img(src='/assets/images/caroline.png')
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                            span.fa.fa-star.fa-xs
+                        #member.col-12.col-md-7
+                            span - Caroline, a member since 3/19
                         
-
-    .bg-image-color3
-        .container
-            #teamline
-                | MEET THE CREATORS
-
-            div#image-holder.row
-            
-                .col-4
-                    img#nathan(src='/assets/images/nathan.png', alt='nathan')
-                    .container
-                    h4 Nathan Hill 
-                    p2 Server-side + DB, Back-End Developer 
-                    
-
-                .col-4
-                    img#casey(src='assets/images/casey.png', alt='casey')
-                    .container
-                    h4 Casey Carroll
-                    p2 Innovation, New Technology Developer
-                    
-
-                .col-4
-                    img#nicole(src='assets/images/nicole.png', alt='nicole')
-                    .container
-                    h4 Nicole LaSusa
-                    p2 Creative Design, Front-End Developer 
-                    br
-                    br
-                    br
 include footer
