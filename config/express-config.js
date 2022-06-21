@@ -5,6 +5,8 @@ const path = require("path");
 const logger = require("./winston.js");
 const passport = require("./passport.js");
 const session = require("express-session");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -25,6 +27,19 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// SET UP CONTACT PAGE EMAIL
+app.use(cors());
+const contactEmail = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "caseydean8@gmail.com",
+    pass: process.env.GMPASS,
+  },
+});
+contactEmail.verify((error) => {
+  error ? console.log(error) : console.log(`ready to send`);
+});
 
 // SET UP THE ROUTERS
 require("../routes/apiRoutes")(app);

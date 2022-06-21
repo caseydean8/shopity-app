@@ -5,30 +5,6 @@ const user = require("../models/user.js");
 // const { it } = require("mocha");
 
 module.exports = (app) => {
-  // this route finds all list items for the authenticated user, and returns them as a JSON object
-  // app.get("/api/userlist", isAuthenticated, (req, res) => {
-  //   let data = {};
-  //   data.user = {};
-  //   data.user.firstName = req.user.firstName;
-  //   data.user.lastName = req.user.lastName;
-  //   data.user.username = req.user.username;
-
-  //   db.list
-  //     .findAll({
-  //       where: {
-  //         userId: req.user.id,
-  //       },
-  //       include: [db.item],
-  //     })
-  //     .then((userList) => {
-  //       data.userList = userList;
-  //       db.item.findAll({}).then((items) => {
-  //         data.items = items;
-  //         res.json(data);
-  //       });
-  //     });
-  // });
-
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
   app.post("/api/adduser", (req, res) => {
     // check to make sure the username is not a duplicate
@@ -72,6 +48,7 @@ module.exports = (app) => {
       }
     });
   });
+
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
   app.post("/login", function (req, res, next) {
     passport.authenticate("local", function (err, user, info) {
@@ -90,14 +67,6 @@ module.exports = (app) => {
     })(req, res, next);
   });
 
-  // Route for logging user out
-  app.get("/logout", (req, res) => {
-    // use passport to log the user out of their session
-    req.logout();
-    // redirect the browse to the home route with no user object
-    res.redirect("/");
-  });
-
   app.post("/api/update", isAuthenticated, (req, res) => {
     // pull together an obect to send to ther database that mirrors the lists
     const { itemId, category } = req.body;
@@ -111,8 +80,16 @@ module.exports = (app) => {
         }
       )
       .then((updated) => {
-        console.log(updated)
+        console.log(updated);
         res.json(updated);
       });
+  });
+
+  // Route for logging user out
+  app.get("/logout", (req, res) => {
+    // use passport to log the user out of their session
+    req.logout();
+    // redirect the browse to the home route with no user object
+    res.redirect("/");
   });
 };

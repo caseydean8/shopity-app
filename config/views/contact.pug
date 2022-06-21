@@ -2,7 +2,17 @@ include head
 include navbar 
 include login-modal
 block contact
-   
+    h1.contact-header Contact
+    form(action="")
+    .mb-3 
+        input(class="form-control" type="text" id="name" placeholder="Name")
+    .mb-3 
+        input(class="form-control" type="email" id="email" placeholder="Email")
+    .mb-3 
+        textarea(class="form-control" type="message" id="message" placeholder="Message")
+    .d-grid.d-sm-block
+        button(class="btn submit-button" type="submit") submit
+
     .bg-image-color3
         #teamline MEET THE CREATORS
         .container

@@ -2,7 +2,8 @@
 $(document).ready(function () {
   let authUser = window.authUser;
   authUser === "true" ? (authUser = true) : (authUser = false);
-
+  console.log(`is user authorized?`)
+  console.log(authUser)
   function showLoginModal() {
     $("#list-builder")
       .delay(300)

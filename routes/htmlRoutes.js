@@ -41,7 +41,11 @@ module.exports = (app) => {
   });
 
   app.get("/contact", (req, res) => {
-    res.render("contact");
+    let data = {};
+    if (req.user) {
+      data.authUser = true;
+    }
+    res.render("contact", data);
   });
 
   // Render 404 page for any unmatched routes
