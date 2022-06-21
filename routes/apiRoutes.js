@@ -2,7 +2,7 @@ const passport = require("../config/passport.js");
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const user = require("../models/user.js");
-// const { it } = require("mocha");
+const nodemailer = require("nodemailer");
 
 module.exports = (app) => {
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
@@ -83,6 +83,44 @@ module.exports = (app) => {
         console.log(updated);
         res.json(updated);
       });
+  });
+
+  // Contact form email send
+  const contactEmail = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: "caseydean8@gmail.com",
+      pass: "ssyaynuoeqoghvpl",
+    },
+  });
+  
+  contactEmail.verify((error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Ready to Send");
+    }
+  });
+
+  app.post("/contact", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email;
+    const message = req.body.message;
+    const mail = {
+      from: name,
+      to: "caseydean8@gmail.com",
+      subject: "Contact Form Submission",
+      html: `<p>Name: ${name}</p>
+           <p>Email: ${email}</p>
+           <p>Message: ${message}</p>`,
+    };
+    contactEmail.sendMail(mail, (error) => {
+      if (error) {
+        res.json({ status: "ERROR" });
+      } else {
+        res.json({ status: "Message Sent" });
+      }
+    });
   });
 
   // Route for logging user out

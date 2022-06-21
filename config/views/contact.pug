@@ -2,39 +2,40 @@ include head
 include navbar 
 include login-modal
 block contact
+.form-container.container
     h1.contact-header Contact
-    form(action="")
-    .mb-3 
-        input(class="form-control" type="text" id="name" placeholder="Name")
-    .mb-3 
-        input(class="form-control" type="email" id="email" placeholder="Email")
-    .mb-3 
-        textarea(class="form-control" type="message" id="message" placeholder="Message")
-    .d-grid.d-sm-block
-        button(class="btn submit-button" type="submit") submit
+    form
+        .mb-3 
+            input(class="form-control" type="text" id="name" placeholder="Name")
+        .mb-3 
+            input(class="form-control" type="email" id="email" placeholder="Email")
+        .mb-3 
+            textarea(class="form-control" type="message" id="message" placeholder="Message")
+        .d-flex.justify-content-end
+            button(id="contact-btn" class="btn submit-button" type="submit") Submit
 
-    .bg-image-color3
-        #teamline MEET THE CREATORS
-        .container
+.bg-image-color3
+    #teamline MEET THE CREATORS
+    .container
 
-            div#image-holder.row
-                .col-12.col-md-4.creator-card
-                    img(src='/assets/images/nathan.png', alt='nathan')
-                    h4 Nathan Hill 
-                    p2 Server-side + DB, Back-End Developer 
-                    
+        div#image-holder.row
+            .col-12.col-md-4.creator-card
+                img(src='/assets/images/nathan.png', alt='nathan')
+                h4 Nathan Hill 
+                p2 Server-side + DB, Back-End Developer 
+                
 
-                .col-12.col-md-4.creator-card
-                    img(src='assets/images/casey.png', alt='casey')
-                    .container
-                    h4 Casey Carroll
-                    p2 Innovation, New Technology Developer
-                    
+            .col-12.col-md-4.creator-card
+                img(src='assets/images/casey.png', alt='casey')
+                .container
+                h4 Casey Carroll
+                p2 Innovation, New Technology Developer
+                
 
-                .col-12.col-md-4.creator-card
-                    img(src='assets/images/nicole.png', alt='nicole')
-                    .container
-                    h4 Nicole LaSusa
-                    p2 Creative Design, Front-End Developer 
+            .col-12.col-md-4.creator-card
+                img(src='assets/images/nicole.png', alt='nicole')
+                .container
+                h4 Nicole LaSusa
+                p2 Creative Design, Front-End Developer 
 
 include footer

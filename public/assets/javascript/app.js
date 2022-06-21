@@ -2,8 +2,7 @@
 $(document).ready(function () {
   let authUser = window.authUser;
   authUser === "true" ? (authUser = true) : (authUser = false);
-  console.log(`is user authorized?`)
-  console.log(authUser)
+  
   function showLoginModal() {
     $("#list-builder")
       .delay(300)
@@ -157,6 +156,17 @@ $(document).ready(function () {
   });
 
   // contact page
+  $("#contact-btn").on("click touchstart", function () {
+    let details = {};
+    details.name = $("#name").val();
+    details.email = $("#email").val();
+    details.message = $("#message").val();
+    $.post("/contact", details).then((response) =>
+      console.log(response.status)
+    );
+  });
+
+  // probably no longer needed
   linePage();
   cycleText();
 

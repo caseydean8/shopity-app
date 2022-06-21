@@ -232,16 +232,6 @@ a {
   color: white;
 }
 
-@media screen and (max-device-width: 574px) {
-  .add-item {
-    margin-top: 0.625rem;
-    width: 40%;
-    margin-left: 60%;
-  }
-  .creator-card {
-    border-bottom: 2px solid white;
-  }
-}
 
 .sign-in {
   width: 9rem;
@@ -514,4 +504,35 @@ p {
   background-color: rgb(39, 39, 39);
   padding: 100px;
   height: 380px;
+}
+
+.form-container {
+  max-width: 35rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.contact-header {
+  font-size: 3.9375rem;
+}
+
+.submit-button {
+  background-color: rgb(223, 223, 35);
+  border: 1px solid rgb(39,39,39);
+  color:rgb(39, 39, 39);
+}
+
+/* Media queries for smaller screens */
+@media screen and (max-device-width: 574px) {
+  .add-item {
+    margin-top: 0.625rem;
+    width: 40%;
+    margin-left: 60%;
+  }
+  .creator-card {
+    border-bottom: 2px solid white;
+  }
+  .form-container {
+    padding-bottom: 24vh;
+  }
 }
