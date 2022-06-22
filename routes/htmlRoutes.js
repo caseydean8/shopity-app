@@ -46,7 +46,7 @@ module.exports = (app) => {
     res.render("contact", data);
   });
 
-  app.get("/contact-success", (req, res) => res.render("contact-success"));
+  app.get("/emailed", (req, res) => res.render("emailed"));
 
   // Render 404 page for any unmatched routes
   app.get("*", (req, res) => {

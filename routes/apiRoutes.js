@@ -90,27 +90,21 @@ module.exports = (app) => {
   // Contact form email send
 
   app.post("/email", (req, res) => {
-    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message;
     const mail = {
       from: name,
       to: "caseydean8@gmail.com",
-      subject: "Contact Form Submission",
+      subject: "Shopity form submission",
       html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
            <p>Message: ${message}</p>`,
     };
     contactEmail.sendMail(mail, (error) => {
-      if (error) {
-        res.json({ status: "ERROR" });
-      } else {
-        console.log("email sent");
-        // res.json({ status: "Message Sent" });
-        res.send("success");
-        res.redirect("/");
-      }
+      error
+        ? res.json({ status: "ERROR" })
+        : res.json({ status: "Message Sent" });
     });
   });
 

@@ -125,45 +125,52 @@ $(document).ready(function () {
 
   // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]
   $(function () {
-    $("#allGroceries, #userGroceries, #groceryCart").on("click touchstart", function (e) {
-      var item = e.target;
-      let changedItem = {};
-      changedItem.itemId = $(item).attr("data-id");
-      if (e.currentTarget.id === "allGroceries") {
-        //move from all to user
-        changedItem.category = 0;
-        $.post("/api/update", changedItem).then((response) => {
-          if (response) {
-            window.location = "/user";
-          }
-        });
-      } else if (e.currentTarget.id === "userGroceries") {
-        changedItem.category = 1;
-        $.post("/api/update", changedItem).then((response) => {
-          if (response) {
-            window.location = "/user";
-          }
-        });
-      } else if (e.currentTarget.id === "groceryCart") {
-        changedItem.category = -1;
-        $.post("/api/update", changedItem).then((response) => {
-          if (response) {
-            window.location = "/user";
-          }
-        });
+    $("#allGroceries, #userGroceries, #groceryCart").on(
+      "click touchstart",
+      function (e) {
+        var item = e.target;
+        let changedItem = {};
+        changedItem.itemId = $(item).attr("data-id");
+        if (e.currentTarget.id === "allGroceries") {
+          //move from all to user
+          changedItem.category = 0;
+          $.post("/api/update", changedItem).then((response) => {
+            if (response) {
+              window.location = "/user";
+            }
+          });
+        } else if (e.currentTarget.id === "userGroceries") {
+          changedItem.category = 1;
+          $.post("/api/update", changedItem).then((response) => {
+            if (response) {
+              window.location = "/user";
+            }
+          });
+        } else if (e.currentTarget.id === "groceryCart") {
+          changedItem.category = -1;
+          $.post("/api/update", changedItem).then((response) => {
+            if (response) {
+              window.location = "/user";
+            }
+          });
+        }
       }
-    });
+    );
   });
 
-  // contact page
-  $("#contact-btn").on("click touchstart", function () {
+  // contact page ========================================
+  $("#contact-btn").on("click touchstart", function (e) {
+    e.preventDefault();
+    $(".contact-header").after("<h3>Sending . . .</h3>");
     let details = {};
     details.name = $("#name").val();
     details.email = $("#email").val();
     details.message = $("#message").val();
     $.post("/email", details).then((response) => {
       console.log(response.status);
-      // make thanks page to redirect to
+      response.status === "ERROR"
+        ? console.log("error")
+        : (window.location = "/emailed");
     });
   });
 

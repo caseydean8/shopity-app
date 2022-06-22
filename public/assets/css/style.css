@@ -508,6 +508,7 @@ p {
 
 .form-container {
   max-width: 35rem;
+  min-height: 45vh;
   padding: 1rem;
   text-align: center;
 }
@@ -522,7 +523,8 @@ p {
   color:rgb(39, 39, 39);
 }
 
-/* Media queries for smaller screens */
+
+/* Media queries for smaller screens ============*/
 @media screen and (max-device-width: 574px) {
   .add-item {
     margin-top: 0.625rem;
