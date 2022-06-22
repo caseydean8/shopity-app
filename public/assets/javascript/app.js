@@ -112,6 +112,7 @@ $(document).ready(function () {
   $(".add-item").on("click", function () {
     let newItem = {};
     newItem.name = $(".form-control").val();
+    // database queries in apiRoutes.js
     $.post("/api/newitem", newItem).then((response) => {
       response.status
         ? $("input.form-control").after(
@@ -159,19 +160,36 @@ $(document).ready(function () {
   });
 
   // contact page ========================================
-  $("#contact-btn").on("click touchstart", function (e) {
-    e.preventDefault();
-    $(".contact-header").after("<h3>Sending . . .</h3>");
-    let details = {};
-    details.name = $("#name").val();
-    details.email = $("#email").val();
-    details.message = $("#message").val();
-    $.post("/email", details).then((response) => {
-      console.log(response.status);
-      response.status === "ERROR"
-        ? console.log("error")
-        : (window.location = "/emailed");
-    });
+  $("#contact-form").validate({
+    rules: {
+      name: "required",
+      email: {
+        required: true,
+        email: true,
+      },
+      message: "required",
+    },
+    messages: {
+      name: "Please enter a name",
+      email: {
+        required: "Please enter and email address",
+        email: "Please enter a valid email address",
+      },
+      message: "Please enter a message",
+    },
+    submitHandler: function () {
+      $(".contact-header").after("<h3>Sending . . .</h3>");
+      let details = {};
+      details.name = $("#name").val();
+      details.email = $("#email").val();
+      details.message = $("#message").val();
+      $.post("/email", details).then((response) => {
+        console.log(response.status);
+        response.status === "ERROR"
+          ? console.log("error")
+          : (window.location = "/emailed");
+      });
+    },
   });
 
   // probably no longer needed

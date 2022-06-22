@@ -4,13 +4,13 @@ include login-modal
 block contact
 .form-container.container
     h1.contact-header Contact
-    form
+    form#contact-form
         .mb-3 
-            input(class="form-control" type="text" id="name" placeholder="Name")
+            input(class="form-control" name="name" type="text" id="name" placeholder="Name")
         .mb-3 
-            input(class="form-control" type="email" id="email" placeholder="Email")
+            input(class="form-control" name="email" type="email" id="email" placeholder="Email")
         .mb-3 
-            textarea(class="form-control" type="message" id="message" placeholder="Message")
+            textarea(class="form-control" name="message" type="message" id="message" placeholder="Message")
         .d-flex.justify-content-end
             button(id="contact-btn" class="btn submit-button" type="submit") Submit
 
