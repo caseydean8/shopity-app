@@ -2,7 +2,7 @@
 $(document).ready(function () {
   let authUser = window.authUser;
   authUser === "true" ? (authUser = true) : (authUser = false);
-  
+
   function showLoginModal() {
     $("#list-builder")
       .delay(300)
@@ -161,9 +161,11 @@ $(document).ready(function () {
     details.name = $("#name").val();
     details.email = $("#email").val();
     details.message = $("#message").val();
-    $.post("/contact", details).then((response) =>
-      console.log(response.status)
-    );
+    $.post("/contact", details).then((response) => {
+      console.log(response.status);
+      $(".contact-header").text("Thanks!");
+      // make thanks page to redirect to
+    });
   });
 
   // probably no longer needed

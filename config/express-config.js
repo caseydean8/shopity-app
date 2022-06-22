@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 //  START USING PUG
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
+app.set("../views", path.join(__dirname, "views"));
 
 // ADD WINSTON LOGGER MIDDLEWARE TO SERVER
 app.use(logger);
