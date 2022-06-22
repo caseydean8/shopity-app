@@ -109,18 +109,21 @@ $(document).ready(function () {
 
   // User Page
   // check database for a duplicate before adding
-  $(".add-item").on("click", function () {
+  $(".add-item").on("click", function (e) {
+    e.preventDefault();
+    $(".error").remove();
     let newItem = {};
     newItem.name = $(".form-control").val();
     // database queries in apiRoutes.js
     $.post("/api/newitem", newItem).then((response) => {
-      response.status
-        ? $("input.form-control").after(
-            "<label class='error'>item already added</label>"
-          )
-        : $.post("/api/update", newItem).then(
-            () => (window.location = "/user")
-          );
+      if (response.status) {
+        $("input.form-control").after(
+          "<label class='error'>item already added</label>"
+        );
+        $(".form-control").val("");
+      } else {
+        $.post("/api/update", newItem).then(() => (window.location = "/user"));
+      }
     });
   });
 
