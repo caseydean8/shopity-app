@@ -125,7 +125,7 @@ $(document).ready(function () {
 
   // Rebuild this page with three different functions for the different buttons. Items will be set to onList, inCart or Exists. I believe this can be done with 2 tables. look up best way to program item with 3 states. probably giving the item value [-1, 0, 1]
   $(function () {
-    $("#allGroceries, #userGroceries, #groceryCart").dblclick(function (e) {
+    $("#allGroceries, #userGroceries, #groceryCart").on("click touchstart", function (e) {
       var item = e.target;
       let changedItem = {};
       changedItem.itemId = $(item).attr("data-id");
@@ -161,9 +161,8 @@ $(document).ready(function () {
     details.name = $("#name").val();
     details.email = $("#email").val();
     details.message = $("#message").val();
-    $.post("/contact", details).then((response) => {
+    $.post("/email", details).then((response) => {
       console.log(response.status);
-      $(".contact-header").text("Thanks!");
       // make thanks page to redirect to
     });
   });

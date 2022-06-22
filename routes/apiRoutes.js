@@ -2,7 +2,7 @@ const passport = require("../config/passport.js");
 const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const user = require("../models/user.js");
-const nodemailer = require("nodemailer");
+const contactEmail = require("../config/contactEmail");
 
 module.exports = (app) => {
   // CREATE A NEW USER, then log them in and redirect them to the user-home page.
@@ -86,23 +86,9 @@ module.exports = (app) => {
   });
 
   // Contact form email send
-  const contactEmail = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: "caseydean8@gmail.com",
-      pass: "ssyaynuoeqoghvpl",
-    },
-  });
-  
-  contactEmail.verify((error) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("Ready to Send");
-    }
-  });
 
-  app.post("/contact", (req, res) => {
+  app.post("/email", (req, res) => {
+    console.log(req.body) 
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message;
@@ -118,7 +104,10 @@ module.exports = (app) => {
       if (error) {
         res.json({ status: "ERROR" });
       } else {
-        res.json({ status: "Message Sent" });
+        console.log("email sent")
+        // res.json({ status: "Message Sent" });
+        res.send("success");
+        res.redirect("/")
       }
     });
   });
