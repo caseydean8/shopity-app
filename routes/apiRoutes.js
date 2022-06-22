@@ -31,22 +31,24 @@ module.exports = (app) => {
   // CREATE A NEW ITEM
   app.post("/api/newitem", isAuthenticated, (req, res) => {
     // use the req.body object to create a new entry in the items table
-    db.item.findOne({ where: { name: req.body.name } }).then((response) => {
-      if (response) {
-        res.json({ status: "duplicate" });
-      } else {
-        const itemCategory = -1;
-        db.item
-          .create({
-            name: req.body.name,
-            category: itemCategory,
-            userId: req.user.id,
-          })
-          .then(() => {
-            res.redirect("/user");
-          });
-      }
-    });
+    db.item
+      .findOne({ where: { name: req.body.name, userId: req.user.id } })
+      .then((response) => {
+        if (response) {
+          res.json({ status: "duplicate" });
+        } else {
+          const itemCategory = -1;
+          db.item
+            .create({
+              name: req.body.name,
+              category: itemCategory,
+              userId: req.user.id,
+            })
+            .then(() => {
+              res.redirect("/user");
+            });
+        }
+      });
   });
 
   //LOGIN ROUTE - redirects to the user homepage HTML ROUTE if successful
@@ -88,7 +90,7 @@ module.exports = (app) => {
   // Contact form email send
 
   app.post("/email", (req, res) => {
-    console.log(req.body) 
+    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message;
@@ -104,10 +106,10 @@ module.exports = (app) => {
       if (error) {
         res.json({ status: "ERROR" });
       } else {
-        console.log("email sent")
+        console.log("email sent");
         // res.json({ status: "Message Sent" });
         res.send("success");
-        res.redirect("/")
+        res.redirect("/");
       }
     });
   });
