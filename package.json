@@ -25,7 +25,7 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.4",
     "rateyo": "^2.3.5",
-    "sequelize": "^5.18.0",
+    "sequelize": "^6.28.2",
     "winston": "^3.2.1",
     "winston-express": "^0.1.1"
   },
